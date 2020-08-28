@@ -17,7 +17,7 @@
 #' @param control_sup logical, indicating if pairwise comparison with control is employed. If FALSE all arms are compared simultaneously
 #' @param dos the outcome wrt which superiority decision is made taking values 1(s), 2(p1), or 3(p2)
 #' @param dof the outcome wrt which futility decision is made taking values 1(s), 2(p1), or 3(p2)
-#' @return a list of simulation outputs including \code{Nt} number of arms,
+#' @return a list of simulation outputs including \code{Nt} sample size at trial termination,
 #'         \code{early} probability of stopping early, \code{events} propostion of sepsis cases,
 #'         \code{supstop_lp} probability of stopping due to superiority of LP,
 #'         \code{supstop_bi} probability of stopping due to superiority of BI,
