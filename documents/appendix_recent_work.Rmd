@@ -56,7 +56,7 @@ Power for outcome s is low for all scenarios, reaching roughly 25% for a true RR
 
 ##### Expected Sample Size
 
-Figure 4 presents the expected (mean) sample size at trial termination. For true RRR=0 and RRR=20%, expected sample sizes were consistently high, albeit with some notable reductions associated with use of a RRR=40% futility stopping threshold. For true of RRR=40% and RRR=60%, expected sample sizes were lower and decreased as the CER improved (worst to best).  Within these RRR, greater superiority thresholds only marginally increased increased expected sample size, but futility thresholds had negligible effects within each superiority threshold. 
+Figure 4 presents the expected (mean) sample size at trial termination. For true RRR=0 and RRR=20%, expected sample sizes were consistently high, albeit with some notable reductions associated with use of a RRR=40% futility stopping threshold. For true of RRR=40% and RRR=60%, expected sample sizes were lower and decreased as the CER improved (worst to best).  Within these RRR, greater superiority thresholds only marginally increased expected sample size, but futility thresholds had negligible effects within each superiority threshold. 
 
 \begin{figure}
   \caption{Expected sample size at trial termination. Results by control event scenarios are presented by rows. Results
@@ -174,7 +174,7 @@ When stopping for futility, outcome s incurs small to moderate downward bias for
   \end{subfigure}
 \end{figure}
 
-## Multi-arm trial: LB, BI, Control
+## Multi-arm trial: L.P, B.I, Control
 
 Note that pairwise comparison with control is employed and that the three arms are not compared simultaneously.  The superiority threshold for L.P. is kept fixed at 0.99 and results are reported for the superiority thresholds of 0.995 and 0.999 for B.I.  The futility bound was kept fixed at 0.2 and a probability threshold of 0.99 was required to stop for futility.  Both superiority and futility decisions were made with respect to the moderately permissive outcome (p1).
 
@@ -216,7 +216,7 @@ Under the true RRR=0, there is a moderate to high chance of stopping for futilit
 
 \begin{figure}
 \centering
-  \caption{Probability of stopping (a) B.I. or (b) L.B. due to futility.  Stopping probabilities are presented for the
+  \caption{Probability of stopping (a) B.I. or (b) L.P. due to futility.  Stopping probabilities are presented for the
   three control event rates (CER – rows), four relative risk reductions (RRR – columns), and two superiority thresholds for B.I. (legend). Note that the legend and x axis labels should reflect the description given above, not as labeled on the graphic.}
   \begin{subfigure}{0.8\textwidth}
     \centering
@@ -233,7 +233,7 @@ Under the true RRR=0, there is a moderate to high chance of stopping for futilit
 
 \begin{figure}
 \centering
-  \caption{Probability of stopping (a) B.I. or (b) L.B. for superiority.  Stopping probabilities are presented for the
+  \caption{Probability of stopping (a) B.I. or (b) L.P. for superiority.  Stopping probabilities are presented for the
   three control event rates (CER – rows), four relative risk reductions (RRR – columns), and two superiority thresholds for B.I. (legend). Note that the legend and x axis labels should reflect the description given above, not as labeled on the graphic.}
   \begin{subfigure}{0.8\textwidth}
     \centering
@@ -271,7 +271,7 @@ the majority of p-values for all outcomes are greater than 10%. Reflecting that 
 \begin{figure}
 \centering
   \caption{Probability that the p-value (from Fisher’s exact test) at termination of the trial is below 5\%, between 5\%
-  and 10\% and greater than 10\% for cases where trial was stopped for futility of (a) B.I or (b) L.B.  The rows
+  and 10\% and greater than 10\% for cases where trial was stopped for futility of (a) B.I or (b) L.P.  The rows
   represent the three control even rate scenarios and the four columns present four relative risk reduction scenarios.
   Note: In the figures below, the denominator in each figure is the number of simulations (not the number of trials
   stopped for futility or superiority, and thus, the proportions do not add up to 100\% within one figure. Further, the
@@ -293,7 +293,7 @@ the majority of p-values for all outcomes are greater than 10%. Reflecting that 
 \begin{figure}
 \centering
   \caption{Probability that the p-value (from Fisher’s exact test) at termination of the trial is below 5\%, between 5\%
-  and 10\% and greater than 10\% for cases where trial was stopped for superiority of (a) B.I or (b) L.B. The rows
+  and 10\% and greater than 10\% for cases where trial was stopped for superiority of (a) B.I or (b) L.P. The rows
   represent the three control even rate scenarios and the four columns present four relative risk reduction scenarios.
   Note: In the figures below, the denominator in each figure is the number of simulations (not the number of trials
   stopped for futility or superiority, and thus, the proportions do not add up to 100% within one figure. Further, the
@@ -327,7 +327,7 @@ When stopping for futility (Figure 21), outcome p2 is generally precise and show
 
 \begin{figure}
 \centering
-  \caption{Distribution of relative risk reduction estimates after stopping early for futility of (a) B.I. or (b) L.B.
+  \caption{Distribution of relative risk reduction estimates after stopping early for futility of (a) B.I. or (b) L.P.
   Results are presented for the three control event rates by rows, four relative risk reductions (by columns) and the
   three outcomes (legend).}
   \begin{subfigure}{0.8\textwidth}
@@ -346,7 +346,7 @@ When stopping for futility (Figure 21), outcome p2 is generally precise and show
 \begin{figure}
 \centering
   \caption{Distribution of relative risk reduction estimates after stopping early for superiority of (a) B.I. or (b)
-  L.B. Results are presented for the control event rate (rows, BEST CASE ONLY for B.I?), four relative risk reductions (by columns) and the three outcomes (legend).}
+  L.P. Results are presented for the control event rate (rows, BEST CASE ONLY for B.I?), four relative risk reductions (by columns) and the three outcomes (legend).}
   \begin{subfigure}{0.8\textwidth}
     \centering
     \caption{}
