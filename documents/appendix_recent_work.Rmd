@@ -115,7 +115,7 @@ The overall probability of observing a p-value less than 5% (i.e., a conventiona
 
 \begin{figure}
   \caption{Overall probability at trial termination that the p-value (from Fisher’s exact test) at termination of the
-  trial is below 5%, between 5% and 10 % and greater than 10%. The rows represent the three control even rate scenarios
+  trial is below 5\%, between 5\% and 10\% and greater than 10\%. The rows represent the three control even rate scenarios
   and the three columns present the three relative risk reduction scenarios.}
   \includegraphics{../plots/stop_p1_new/pvalue_sim_05_stopp1_new.png}
 \end{figure}
@@ -174,7 +174,7 @@ When stopping for futility, outcome s incurs small to moderate downward bias for
   \end{subfigure}
 \end{figure}
 
-## Multi-arm trial: L.P, B.I, Control
+## Multi-arm trial: B.I., L.P., and Control
 
 Note that pairwise comparison with control is employed and that the three arms are not compared simultaneously.  The superiority threshold for L.P. is kept fixed at 0.99 and results are reported for the superiority thresholds of 0.995 and 0.999 for B.I.  The futility bound was kept fixed at 0.2 and a probability threshold of 0.99 was required to stop for futility.  Both superiority and futility decisions were made with respect to the moderately permissive outcome (p1).
 
@@ -360,8 +360,11 @@ When stopping for futility (Figure 21), outcome p2 is generally precise and show
   \end{subfigure}
 \end{figure}
 
+### Summary
 
+For the two arm trial with stopping rules for the moderately permissive outcome (p1), a superiority threshold of 0.99 should be employed to ensure good control of Type 1 error (false positive rate less than 5%).  Under this design, there is good power to detect outcomes p1 and p2 across most scenarios and a high proportion of p-values expected to be less than 5%. Additionally, there is little bias and good precision in the RRR estimates of outcomes p1 and p2.
 
+The multi-arm trial comparing B.I., L.P. and Control had higher expected sample size at trial termination and a high proportion of significant p-values is expected for RRR=20%, 40%, and 60% for outcomes p1 and p2.  There is good precision in the RRR estimates of outcomes p1 and p2 when stopping for superiority, though this degrades when stopping for futility.
 
 <!-- \begin{figure} -->
 <!--   \caption{} -->
