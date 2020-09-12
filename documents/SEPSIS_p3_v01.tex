@@ -1,0 +1,190 @@
+\documentclass[12pt]{article}
+		\title{A Bayesian Adaptive Design for Clinical Trials with Composite Outcomes and Low Event Rates}
+
+
+\pdfoutput=1
+\date{}
+	\usepackage{amsmath,latexsym, graphics,graphicx,showexpl,amsthm,amsfonts,fullpage}
+\usepackage[left=1in,top=1in,right=1in,nohead]{geometry}
+%\usepackage{algorithmic,float,alg}
+%\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage[margin=10pt,font={small},labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage{bbm} 
+\usepackage{setspace}
+%\usepackage[countmax]{subfloat}
+\usepackage{natbib}
+\usepackage[titletoc]{appendix}
+\usepackage{epstopdf}
+%\usepackage{ednote}
+\usepackage[pdftex,bookmarks,colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage{algpseudocode,algorithm}
+\usepackage{authblk}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{etoolbox}
+\usepackage{setspace}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\AtBeginEnvironment{thebibliography}{\linespread{1.7}\selectfont}
+
+%% watermark
+%\usepackage{graphicx,eso-pic,xcolor}
+%\makeatletter
+%\AddToShipoutPicture{%
+%\setlength{\@tempdimb}{.5\paperwidth}%
+%\setlength{\@tempdimc}{.5\paperheight}%
+%\setlength{\unitlength}{1pt}%
+%\put(\strip@pt\@tempdimb,\strip@pt\@tempdimc){%
+%    \makebox(-500,200){\rotatebox{90}{\textcolor[gray]{0.70}%
+%       {\Large \textsf{Preprint, January, 2015}}}}
+%  }%
+%}
+%\makeatother
+%\author[1]{Shirin Golchi\thanks{shirin.golchi@mcgill.ca}}
+%
+%\affil[1]{Department of Epidemiology, Biostatistics and Occupational Health, McGill University}
+
+
+	\begin{document}
+	
+{\linespread{1.5}	
+	\maketitle
+
+
+\begin{abstract}
+We propose a Bayesian adaptive design for clinical trials where the outcome of interest is the risk of a relatively rare disease or condition and the incidence rate varies according to different operational definition of events. The proposed design takes advantage of different case definitions of the outcome of interest that vary in stringency. Composite stopping rules are proposed according to Bayesian superiority and futility results. A variety of stopping rules, and design configurations are compared through an extensive simulation study.
+\end{abstract}
+
+\noindent%
+{\it Keywords: composite outcomes, stopping rules, futility, superiority, simulations}  
+
+}
+\section{Introduction}
+\label{sec:intro}
+\subsection{Motivation and rational for the adaptive design in the SEPSIS trials context}
+\subsection{Outcome definitions}
+
+
+\begin{table}
+\begin{tabular} {|l | p{10.5cm}|}
+	\hline
+	Outcome & Definition\\
+	\hline
+Stringent ($s$) &	Non-injury related death\newline
+                        Blood culture confirmed sepsis\newline
+                        Possibly urine culture confirmed sepsis\\
+    \hline
+Moderately permissive ($p_1$)	& Middle ground between $s$ and $p_2$\newline
+                                                     Physician confirmed\newline
+                                                     Removal of vague symptoms allowed for $p_2$/pSBI\newline
+                                                     (e.g. remove fast breathing)\\
+      \hline
+Highly permissive ($p_2$)	& Panigrahi outcome or similar\newline
+                                               WHO definition, clinical sepsis, pSBI\newline
+                                               Possibly diagnosed by community health worker at onset rather than physician upon hospital visit\\
+        \hline
+\end{tabular}
+
+   \caption{ Description of composite outcomes}
+\label{t1}  
+\end{table}
+
+
+
+
+
+
+\section{Design}\label{Sec:design}
+\subsection{Design description}
+A two-arm Bayesian adaptive trial with L-Plantarum against placebo where stopping with respect to superiority and futility is allowed at prespecified, equally distanced (wrt the number of patients enrolled) interim looks. 
+
+\subsection{Stopping rules}
+Superiority and futility are defined as posterior probability of effect size being greater than a given threshold crossing an upper and lower probability threshold respectively. The posterior probabilities can be obtained and will be different depending on what sepsis case definition is used. Therefore composite stopping rules may be constructed by, for example, making futility and superiority decisions according to different outcome definitions.
+\begin{itemize}
+\item Set 1: Stop for superiority with respect to s; Stop for futility with respect to s and $p_2$
+\item Set 2: Stop for superiority and futility with respect to $p_2$
+\item Set 3: Stop for superiority and futility with respect to $p_1$
+\end{itemize}
+
+\subsection{Design operating characteristics}
+Definition of power and false positive rate under the Bayesian superiority and futility decisions.
+Superiority is defined as posterior probability of a positive effect exceeding an upper threshold, referred to as the superiority probability threshold,
+\begin{equation}
+P(RRR>0\mid y)>t_s
+\end{equation}
+Futility is defined as posterior probability that the effect is smaller than a pre-determined value (MID) crossing an upper threshold (referred to as the futility probability threshold) and superiority is not concluded,
+\begin{equation}
+P(RRR>0\mid y)<t_s \hskip 10pt \text{and} \hskip 10pt P(RRR<MID\mid y)>t_f
+\end{equation}
+
+
+\subsection{Design free parameters}
+Superiority and futility probability thresholds, futility RRR threshold, maximum affordable sample size, etc.
+
+
+
+\section{Simulation study}\label{Sec:sims}
+\subsection{Assumptions}
+\subsubsection{Correlation structure and data generating process}
+Data for the simulation study are generated according to the underlying assumptions regarding the three composite outcomes (Table 1). Based on the outcome definitions, highest event rates are expected to be observed according to the highly permissive outcome $p_2$, while the strict definition of the stringent outcome $s$ results in low event rates. In addition, every case that is considered an event under the definition of s is also an event under $p_1$ and $p_2$, and any event under $p_1$ is an event under $p_2$. Suppose that the event rates for the three outcomes, $s$, $p_1$ and $p_2$, are denoted by $\pi_s$, $\pi_{p_1}$and $\pi_{p_2}$, respectively. The three outcomes are generated as follows,
+\begin{align}
+&Y_s\sim B( \pi_s )\nonumber\\
+&Y_{p_1} |Y_s\sim Y_s+(1-Y_s)B\left(\frac{\pi_{p_1}- \pi_s}{1-\pi_s}\right)\nonumber\\
+&Y_{p_2} |Y_{p_1}\sim Y_{p_1}+(1-Y_{p_1 })B\left(\frac{\pi_{p_2}- \pi_{p_1 }}{1-\pi_{p_1 } }\right)
+\end{align}
+Effect size dilution
+We may assume that the intervention is only effective for a specific case definition (blood culture + ?) and using a permissive case definition can result in diluting the effect by introducing a number of cases that the intervention has potentially no effect in reducing the risk.
+Time-varying risks
+The control risks may vary due to external factors through the course of the trial. 
+Model and Analysis
+Starting from flat (Beta) priors over the arm specific risk parameter, interim analysis is performed as sequentially updating the posterior distribution analytically in a Beta-binomial model. Posterior samples of relative risk reduction are obtained from samples drawn from the posterior distribution of arm specific risks. Monte Carlo estimates of the posterior probability of superiority/futility are then obtained from these samples.
+\subsection{Simulation Scenarios}
+simulations scenarios comprised three settings for the CER (base, worst, and best), four settings for the magnitude of effect (RRR of 0\%, 20\%, 40\%, and 60\%, and two stopping rule settings that each employed $3\times3$ superiority and futility bound combinations. Thus, a total of 216 scenarios were simulated covering 18 stopping rules applied to 12 data settings. The properties under each scenario was explored with data from 500 simulations.
+
+\subsection{Simulation results}
+
+
+\section{Discussion}\label{Sec:dis}
+
+
+
+%\begin{figure}[t]
+%	
+%	\begin{subfigure}[b]{0.5\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{}
+%		\caption{}
+%		\label{}
+%	\end{subfigure}
+%	\begin{subfigure}[b]{0.5\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{}
+%		\caption{}
+%		\label{}
+%	\end{subfigure}
+%	
+%	\centering
+%	\begin{subfigure}[b]{0.5\textwidth}
+%		
+%		\includegraphics[width=\textwidth]{}
+%		\caption{}
+%		\label{}
+%	\end{subfigure}\\
+%	\caption{ }
+%	\label{}
+%\end{figure}
+%
+%
+%\begin{figure}[t]
+%	\centering
+%	\includegraphics[width=.75\textwidth]{}
+%	\caption{}
+%	\label{}
+%\end{figure}
+
+\end{document}
