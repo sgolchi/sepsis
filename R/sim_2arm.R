@@ -59,9 +59,9 @@ scn_2arm = function(i, cRates = c(0.02, 0.035, .05), RRR = .4, nb = 1000, maxN =
     for (k in 1:nb) {
       xb0[which(xb0[,k] == 1), k] = rbinom(1, 1, 1)
     }
-    yb = t(apply(theta0 %*% xb0, c(1,2), function(z) rbinom(1, 1, prob = z)))
-    yb[,2] = yb[,2]*yb[,1]
-    yb[,3] = yb[,3]*yb[,2] 
+    yb = apply(theta0 %*% xb0, c(1,2), function(z) rbinom(1, 1, prob = z))
+    yb[2,] = yb[2,]*yb[1,]
+    yb[3,] = yb[3,]*yb[2,] 
     x = abind(x, xb, along = 2)
     x0 = abind(x0, xb0, along = 2)
     y = abind(y, yb, along = 2)
