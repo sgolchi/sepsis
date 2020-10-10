@@ -7,17 +7,17 @@
 #' @param RRR vector of relative risk reductions - same size as the number of interventions
 #' @param nb batch size; interim analysis is done at every \code{nb}patients
 #' @param maxN maximum sample size; trial stops when \code{maxN} is reached
-#' @param N size of posterior sample used 
+#' @param N size of posterior sample used
 #' @param upper1 superiority threshold for LP
 #' @param upper2 superiority threshold for BI
-#' @param lower futility probability threshold 
+#' @param lower futility probability threshold
 #' @param futb futility effect threshold (MID)
 #' @param padhere vector of probabilities of adherence for each arm
 #' @param adapt logical, indicating if allocation probabilities are adapted
 #' @param control_sup logical, indicating if pairwise comparison with control is employed. If FALSE all arms are compared simultaneously
 #' @param dos the outcome wrt which superiority decision is made taking values 1(s), 2(p1), or 3(p2)
 #' @param dof the outcome wrt which futility decision is made taking values 1(s), 2(p1), or 3(p2)
-#' @return a list of simulation outputs including \code{Nt} number of arms, 
+#' @return a list of simulation outputs including \code{Nt} number of arms,
 #'         \code{early} probability of stopping early, \code{events} propostion of sepsis cases,
 #'         \code{supstop_lp} probability of stopping due to superiority of LP,
 #'         \code{supstop_bi} probability of stopping due to superiority of BI,
@@ -27,14 +27,14 @@
 #'         \code{RRR_hat} relative risk reduction estimates (posterior means),
 #'         \code{pvalue_lp} p-values for LP, \code{pbvalue_bi} p-values for BI
 #' @export
-scn_2arm = function(i, cRates = c(0.02, 0.035, .05), RRR = .4, nb = 1000, maxN = 12000, 
+scn_2arm = function(i, cRates = c(0.02, 0.035, .05), RRR = .4, nb = 1000, maxN = 12000,
                N = 1000, upper = 0.975, lower = .01, futb = 0.4, padhere = rep(1,nt), adapt = F, control_sup = T,
                dos = c(1), dof = c(1,3)) {
   cr = cRates
   cr[2] = (cRates[2] - cRates[1])/(1 - cRates[1])
   cr[3] = (cRates[3] - cRates[2])/(1 - cRates[2])
   #RRR[2] = RRR[1] - RRR[2]
-  theta0 = 1 - cbind(cr, (1 - RRR) * cRates)
+  theta0 = 1 - cbind(cr, (1 - RRR) * cr)
   nt = ncol(theta0)
   no = nrow(theta0)
   con = 1
@@ -61,7 +61,7 @@ scn_2arm = function(i, cRates = c(0.02, 0.035, .05), RRR = .4, nb = 1000, maxN =
     }
     yb = apply(theta0 %*% xb0, c(1,2), function(z) rbinom(1, 1, prob = z))
     yb[2,] = yb[2,]*yb[1,]
-    yb[3,] = yb[3,]*yb[2,] 
+    yb[3,] = yb[3,]*yb[2,]
     x = abind(x, xb, along = 2)
     x0 = abind(x0, xb0, along = 2)
     y = abind(y, yb, along = 2)
@@ -77,14 +77,14 @@ scn_2arm = function(i, cRates = c(0.02, 0.035, .05), RRR = .4, nb = 1000, maxN =
     theta_new = - log((1 - p_new) / p_new)
     theta = abind(theta, theta_new, along = 4)
     check = apply(theta_new, c(1,3), control_sup_check)
-    psup1 = abind(psup1, apply(check, c(1,3), mean), along = 3) 
+    psup1 = abind(psup1, apply(check, c(1,3), mean), along = 3)
     fut = NULL
     for (i in dof) fut = c(fut, sum(RRR_new[,i]<futb)/nrow(RRR_new))
     if (max(psup1[,dos,j+1]) > upper) {
-      supstop = 1 
+      supstop = 1
       break
     }
-    if (sum(fut > 0.975) == length(fut)) {
+    if (sum(fut > 0.99) == length(fut)) {
       futstop = 1
       break
     }
@@ -109,28 +109,28 @@ scn_2arm = function(i, cRates = c(0.02, 0.035, .05), RRR = .4, nb = 1000, maxN =
     pval = c(pval, ft$p.value)
   }
   #out = list(psup = psup1, psup2 = psup2, pinf = pinf, theta = theta, est = est, y = y, x = x[,-1], x0 = x0[,-1])
-  out = data.frame(pow1 = pow[1], pow2 = pow[2], pow3 = pow[3], Nt = ncol(y), early = early, event1 = fail[1], 
-                   event2 = fail[2], event3 = fail[3], supstop = supstop, futstop = futstop, 
-                   reachmax = reachmax, RRR_hat1 = RRR_hat[1], RRR_hat2 = RRR_hat[2], RRR_hat3 = RRR_hat[3], 
+  out = data.frame(pow1 = pow[1], pow2 = pow[2], pow3 = pow[3], Nt = ncol(y), early = early, event1 = fail[1],
+                   event2 = fail[2], event3 = fail[3], supstop = supstop, futstop = futstop,
+                   reachmax = reachmax, RRR_hat1 = RRR_hat[1], RRR_hat2 = RRR_hat[2], RRR_hat3 = RRR_hat[3],
                    pvalue1 = pval[1], pvalue2 = pval[2], pvalue3 = pval[3])
   #class(out) = 'trial'
   return(out)
 }
 
 
-simScn_2arm = function(s, p1, p2, RRR, upper, futb, M = 500, dos = 2, dof = 2) {
+simScn_2arm = function(s, p1, p2, RRR, upper, futb, M = 500, dos = 2, dof = 2, nb = 1000) {
   cRates = c(s, p1, p2)
-  df = data.frame(t(sapply(1:M, scn_2arm, cRates = cRates, RRR = RRR, upper = upper, futb = futb, dos = dos,
-                           simplify = T))) 
+  df = data.frame(t(sapply(1:M, scn_2arm, cRates = cRates, RRR = RRR, upper = upper, futb = futb, dos = dos, nb = nb,
+                           simplify = T)))
   df = unlist_df(df)
   # out = data.frame(power1 = mean(unlist(df$pow1)),
   #                  power2 = mean(unlist(df$pow2)),
   #                  power3 = mean(unlist(df$pow3)),
   #                  pearly = mean(unlist(df$early)),
   #                  Nt = mean(as.numeric(df$Nt)),
-  #                  supstop = mean(unlist(df$supstop)), 
-  #                  futstop = mean(unlist(df$futstop)), 
-  #                  reachmax = mean(unlist(df$reachmax)), 
+  #                  supstop = mean(unlist(df$supstop)),
+  #                  futstop = mean(unlist(df$futstop)),
+  #                  reachmax = mean(unlist(df$reachmax)),
   #                  E.event.rate1 = mean(unlist(df$event1)),
   #                  E.event.rate2 = mean(unlist(df$event2)),
   #                  E.event.rate3 = mean(unlist(df$event3)),
@@ -148,10 +148,11 @@ simScn_2arm = function(s, p1, p2, RRR, upper, futb, M = 500, dos = 2, dof = 2) {
 sim_exe_2arm = function(cases, M, filename, ...) {
   z = list(...)
   if (!is.null(z$dos)) dos = z$dos
-  if (!is.null(z$dof)) dos = z$dof
+  if (!is.null(z$dof)) dof = z$dof
+  if (!is.null(z$nb)) nb = z$nb
   cc = cases
-  tt = mapply(simScn_2arm, s = cc$s, p1 = cc$p1, p2 = cc$p2, RRR = cc$RRR, upper = cc$sup, 
-              futb = cc$fut, dos = dos, M = M)
+  tt = mapply(simScn_2arm, s = cc$s, p1 = cc$p1, p2 = cc$p2, RRR = cc$RRR, upper = cc$sup,
+              futb = cc$fut, dos = dos, dof = dof, M = M, nb = nb)
   dftt = cbind(unlist_df(t(tt)), cases[rep(1:nrow(cases), each = M),])
   save(dftt, file = filename)
 }
