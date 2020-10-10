@@ -9,6 +9,7 @@ library(dplyr)
 
 load("./james_sims/sim_runs_nb_1000.Rdata")
 
+dftt <- dftt %>% filter(!(fut %in% c(0.4, 0.6)))
 dftt$CER = NA
 dftt$CER[dftt$s == .002] = 'worst'
 dftt$CER[dftt$s == .01] = 'base'
@@ -263,6 +264,7 @@ ggsave(file = 'power_all_p1.png', path = 'james_sims/p1_plots/batch_size_nb_1000
 
 load("./james_sims/sim_runs_nb_2000.Rdata")
 
+dftt <- dftt %>% filter(!(fut %in% c(0.4, 0.6)))
 dftt$CER = NA
 dftt$CER[dftt$s == .002] = 'worst'
 dftt$CER[dftt$s == .01] = 'base'
@@ -517,6 +519,7 @@ ggsave(file = 'power_all_p1.png', path = 'james_sims/p1_plots/batch_size_nb_2000
 
 load("./james_sims/sim_runs_nb_3000.Rdata")
 
+dftt <- dftt %>% filter(!(fut %in% c(0.4, 0.6)))
 dftt$CER = NA
 dftt$CER[dftt$s == .002] = 'worst'
 dftt$CER[dftt$s == .01] = 'base'
