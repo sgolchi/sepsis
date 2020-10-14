@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.9)  10 OCT 2020 11:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.13)  14 OCT 2020 17:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **appendix_new_simulations.tex
 (./appendix_new_simulations.tex
-LaTeX2e <2020-10-01>
+LaTeX2e <2020-10-01> patch level 1
 L3 programming layer <2020-10-05> xparse <2020-03-03> (/Users/jameswillard/Libr
 ary/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
@@ -195,7 +195,7 @@ Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
 (/Users/jameswillard/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.s
 ty
-Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
 \@linkdim=\dimen148
 \Hy@linkcounter=\count195
@@ -502,7 +502,7 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 83.
 (/Users/jameswillard/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<../p1_plots/batch_size_nb_1000/type_1_error_p1.png, id=16, 3011.25pt x 1689.31
+<../p1_plots/batch_size_nb_1000/type_1_error_p1.png, id=20, 3011.25pt x 1689.31
 125pt>
 File: ../p1_plots/batch_size_nb_1000/type_1_error_p1.png Graphic file (type png
 )
@@ -514,371 +514,379 @@ ed on input line 119.
 
 {/Users/jameswillard/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.m
 ap} <../p1_plots/batch_size_nb_1000/type_1_error_p1.png>]
-<../p1_plots/batch_size_nb_1000/power_all_p1.png, id=36, 4516.875pt x 1689.3112
+<../p1_plots/batch_size_nb_1000/power_all_p1.png, id=39, 4516.875pt x 1689.3112
 5pt>
 File: ../p1_plots/batch_size_nb_1000/power_all_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_1000/power_all_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_1000/power_all_p1.png  used 
 on input line 137.
 (pdftex.def)             Requested size: 469.70258pt x 175.66876pt.
-<../p1_plots/batch_size_nb_1000/power_p1.png, id=37, 3011.25pt x 1689.31125pt>
-File: ../p1_plots/batch_size_nb_1000/power_p1.png Graphic file (type png)
-<use ../p1_plots/batch_size_nb_1000/power_p1.png>
-Package pdftex.def Info: ../p1_plots/batch_size_nb_1000/power_p1.png  used on i
-nput line 149.
-(pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
 [2 <../p1_plots/batch_size_nb_1000/power_all_p1.png>]
-<../p1_plots/batch_size_nb_1000/exp_sample_size_p1.png, id=45, 3011.25pt x 1689
+<../p1_plots/batch_size_nb_1000/exp_sample_size_p1.png, id=47, 3011.25pt x 1689
 .31125pt>
 File: ../p1_plots/batch_size_nb_1000/exp_sample_size_p1.png Graphic file (type 
 png)
 <use ../p1_plots/batch_size_nb_1000/exp_sample_size_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_1000/exp_sample_size_p1.png 
- used on input line 165.
+ used on input line 155.
 (pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[3 <../p1_plots/batch_size_nb_1000/power_p1.png>]
-<../p1_plots/batch_size_nb_1000/prob_reach_max_size_p1.png, id=54, 3011.25pt x 
-1689.31125pt>
+[3
+
+ <../p1_plots/batch_size_nb_1000/exp_sample_size_p1.png>]
+<../p1_plots/batch_size_nb_1000/prob_reach_max_size_p1.png, id=56, 3011.25pt x 
+1137.24875pt>
 File: ../p1_plots/batch_size_nb_1000/prob_reach_max_size_p1.png Graphic file (t
 ype png)
 <use ../p1_plots/batch_size_nb_1000/prob_reach_max_size_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_1000/prob_reach_max_size_p1.
-png  used on input line 180.
-(pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[4 <../p1_plots/batch_size_nb_1000/exp_sample_size_p1.png>]
-<../p1_plots/batch_size_nb_1000/prob_stop_early_p1.png, id=63, 3011.25pt x 1689
+png  used on input line 172.
+(pdftex.def)             Requested size: 469.72556pt x 177.39967pt.
+[4
+
+ <../p1_plots/batch_size_nb_1000/prob_reach_max_size_p1.png>]
+<../p1_plots/batch_size_nb_1000/prob_stop_early_p1.png, id=65, 3011.25pt x 1689
 .31125pt>
 File: ../p1_plots/batch_size_nb_1000/prob_stop_early_p1.png Graphic file (type 
 png)
 <use ../p1_plots/batch_size_nb_1000/prob_stop_early_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_1000/prob_stop_early_p1.png 
- used on input line 200.
+ used on input line 192.
 (pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[5 <../p1_plots/batch_size_nb_1000/prob_reach_max_size_p1.png>]
-<../p1_plots/batch_size_nb_1000/prob_stop_early_fut_p1.png, id=72, 3011.25pt x 
-1689.31125pt>
+<../p1_plots/batch_size_nb_1000/prob_stop_early_fut_p1.png, id=66, 3011.25pt x 
+1454.43375pt>
 File: ../p1_plots/batch_size_nb_1000/prob_stop_early_fut_p1.png Graphic file (t
 ype png)
 <use ../p1_plots/batch_size_nb_1000/prob_stop_early_fut_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_1000/prob_stop_early_fut_p1.
-png  used on input line 227.
-(pdftex.def)             Requested size: 375.808pt x 210.8283pt.
+png  used on input line 219.
+(pdftex.def)             Requested size: 375.808pt x 181.51526pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 228.
+(Font)              <10> on input line 220.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 228.
+(Font)              <7> on input line 220.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 228.
-<../p1_plots/batch_size_nb_1000/prob_stop_early_sup_p1.png, id=73, 3011.25pt x 
+(Font)              <5> on input line 220.
+<../p1_plots/batch_size_nb_1000/prob_stop_early_sup_p1.png, id=67, 3011.25pt x 
 1689.31125pt>
 File: ../p1_plots/batch_size_nb_1000/prob_stop_early_sup_p1.png Graphic file (t
 ype png)
 <use ../p1_plots/batch_size_nb_1000/prob_stop_early_sup_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_1000/prob_stop_early_sup_p1.
-png  used on input line 232.
+png  used on input line 224.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-[6 <../p1_plots/batch_size_nb_1000/prob_stop_early_p1.png>]
-<../p1_plots/batch_size_nb_1000/pvalue_p1.png, id=80, 3011.25pt x 1689.31125pt>
+[5
+
+ <../p1_plots/batch_size_nb_1000/prob_stop_early_p1.png>] [6 <../p1_plots/batch
+_size_nb_1000/prob_stop_early_fut_p1.png> <../p1_plots/batch_size_nb_1000/prob_
+stop_early_sup_p1.png>]
+<../p1_plots/batch_size_nb_1000/pvalue_p1.png, id=83, 3011.25pt x 1689.31125pt>
 
 File: ../p1_plots/batch_size_nb_1000/pvalue_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_1000/pvalue_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_1000/pvalue_p1.png  used on 
-input line 256.
+input line 250.
 (pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[7 <../p1_plots/batch_size_nb_1000/prob_stop_early_fut_p1.png> <../p1_plots/bat
-ch_size_nb_1000/prob_stop_early_sup_p1.png>]
-<../p1_plots/batch_size_nb_1000/pvalue_fut_p1.png, id=91, 3011.25pt x 1689.3112
+<../p1_plots/batch_size_nb_1000/pvalue_fut_p1.png, id=84, 3011.25pt x 1689.3112
 5pt>
 File: ../p1_plots/batch_size_nb_1000/pvalue_fut_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_1000/pvalue_fut_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_1000/pvalue_fut_p1.png  used
- on input line 279.
+ on input line 273.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-<../p1_plots/batch_size_nb_1000/pvalue_sup_p1.png, id=92, 3011.25pt x 1689.3112
+<../p1_plots/batch_size_nb_1000/pvalue_sup_p1.png, id=85, 3011.25pt x 1689.3112
 5pt>
 File: ../p1_plots/batch_size_nb_1000/pvalue_sup_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_1000/pvalue_sup_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_1000/pvalue_sup_p1.png  used
- on input line 285.
+ on input line 279.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-[8 <../p1_plots/batch_size_nb_1000/pvalue_p1.png>]
-<../p1_plots/batch_size_nb_1000/RRRhat_p1.png, id=99, 3011.25pt x 1689.31125pt>
+[7
 
+ <../p1_plots/batch_size_nb_1000/pvalue_p1.png>] [8 <../p1_plots/batch_size_nb_
+1000/pvalue_fut_p1.png> <../p1_plots/batch_size_nb_1000/pvalue_sup_p1.png>]
+<../p1_plots/batch_size_nb_1000/RRRhat_p1.png, id=102, 3011.25pt x 1689.31125pt
+>
 File: ../p1_plots/batch_size_nb_1000/RRRhat_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_1000/RRRhat_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_1000/RRRhat_p1.png  used on 
-input line 302.
+input line 298.
 (pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[9 <../p1_plots/batch_size_nb_1000/pvalue_fut_p1.png> <../p1_plots/batch_size_n
-b_1000/pvalue_sup_p1.png>]
-<../p1_plots/batch_size_nb_1000/RRRhat_fut_p1.png, id=109, 3011.25pt x 1689.311
+<../p1_plots/batch_size_nb_1000/RRRhat_fut_p1.png, id=103, 3011.25pt x 1689.311
 25pt>
 File: ../p1_plots/batch_size_nb_1000/RRRhat_fut_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_1000/RRRhat_fut_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_1000/RRRhat_fut_p1.png  used
- on input line 327.
+ on input line 323.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-<../p1_plots/batch_size_nb_1000/RRRhat_sup_p1.png, id=110, 3011.25pt x 1689.311
+<../p1_plots/batch_size_nb_1000/RRRhat_sup_p1.png, id=104, 3011.25pt x 1689.311
 25pt>
 File: ../p1_plots/batch_size_nb_1000/RRRhat_sup_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_1000/RRRhat_sup_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_1000/RRRhat_sup_p1.png  used
- on input line 333.
+ on input line 329.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-[10 <../p1_plots/batch_size_nb_1000/RRRhat_p1.png>]
-<../p1_plots/batch_size_nb_2000/type_1_error_p1.png, id=117, 3011.25pt x 1689.3
+[9
+
+ <../p1_plots/batch_size_nb_1000/RRRhat_p1.png>] [10 <../p1_plots/batch_size_nb
+_1000/RRRhat_fut_p1.png> <../p1_plots/batch_size_nb_1000/RRRhat_sup_p1.png>]
+<../p1_plots/batch_size_nb_2000/type_1_error_p1.png, id=120, 3011.25pt x 1689.3
 1125pt>
 File: ../p1_plots/batch_size_nb_2000/type_1_error_p1.png Graphic file (type png
 )
 <use ../p1_plots/batch_size_nb_2000/type_1_error_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_2000/type_1_error_p1.png  us
-ed on input line 364.
+ed on input line 355.
 (pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[11 <../p1_plots/batch_size_nb_1000/RRRhat_fut_p1.png> <../p1_plots/batch_size_
-nb_1000/RRRhat_sup_p1.png>]
-<../p1_plots/batch_size_nb_2000/power_all_p1.png, id=129, 4516.875pt x 1689.311
+[11
+
+ <../p1_plots/batch_size_nb_2000/type_1_error_p1.png>]
+<../p1_plots/batch_size_nb_2000/power_all_p1.png, id=130, 4516.875pt x 1689.311
 25pt>
 File: ../p1_plots/batch_size_nb_2000/power_all_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_2000/power_all_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_2000/power_all_p1.png  used 
-on input line 373.
+on input line 366.
 (pdftex.def)             Requested size: 469.70258pt x 175.66876pt.
-<../p1_plots/batch_size_nb_2000/power_p1.png, id=130, 3011.25pt x 1689.31125pt>
+[12
 
-File: ../p1_plots/batch_size_nb_2000/power_p1.png Graphic file (type png)
-<use ../p1_plots/batch_size_nb_2000/power_p1.png>
-Package pdftex.def Info: ../p1_plots/batch_size_nb_2000/power_p1.png  used on i
-nput line 380.
-(pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[12 <../p1_plots/batch_size_nb_2000/type_1_error_p1.png> <../p1_plots/batch_siz
-e_nb_2000/power_all_p1.png>]
-<../p1_plots/batch_size_nb_2000/exp_sample_size_p1.png, id=142, 3011.25pt x 168
+ <../p1_plots/batch_size_nb_2000/power_all_p1.png>]
+<../p1_plots/batch_size_nb_2000/exp_sample_size_p1.png, id=139, 3011.25pt x 168
 9.31125pt>
 File: ../p1_plots/batch_size_nb_2000/exp_sample_size_p1.png Graphic file (type 
 png)
 <use ../p1_plots/batch_size_nb_2000/exp_sample_size_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_2000/exp_sample_size_p1.png 
- used on input line 389.
+ used on input line 377.
 (pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[13 <../p1_plots/batch_size_nb_2000/power_p1.png>]
-<../p1_plots/batch_size_nb_2000/prob_reach_max_size_p1.png, id=152, 3011.25pt x
- 1689.31125pt>
+[13
+
+ <../p1_plots/batch_size_nb_2000/exp_sample_size_p1.png>]
+<../p1_plots/batch_size_nb_2000/prob_reach_max_size_p1.png, id=149, 3011.25pt x
+ 1137.24875pt>
 File: ../p1_plots/batch_size_nb_2000/prob_reach_max_size_p1.png Graphic file (t
 ype png)
 <use ../p1_plots/batch_size_nb_2000/prob_reach_max_size_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_2000/prob_reach_max_size_p1.
-png  used on input line 399.
-(pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-<../p1_plots/batch_size_nb_2000/prob_stop_early_p1.png, id=153, 3011.25pt x 168
+png  used on input line 389.
+(pdftex.def)             Requested size: 469.72556pt x 177.39967pt.
+[14
+
+ <../p1_plots/batch_size_nb_2000/prob_reach_max_size_p1.png>]
+<../p1_plots/batch_size_nb_2000/prob_stop_early_p1.png, id=158, 3011.25pt x 168
 9.31125pt>
 File: ../p1_plots/batch_size_nb_2000/prob_stop_early_p1.png Graphic file (type 
 png)
 <use ../p1_plots/batch_size_nb_2000/prob_stop_early_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_2000/prob_stop_early_p1.png 
- used on input line 410.
+ used on input line 400.
 (pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[14 <../p1_plots/batch_size_nb_2000/exp_sample_size_p1.png> <../p1_plots/batch_
-size_nb_2000/prob_reach_max_size_p1.png>]
-<../p1_plots/batch_size_nb_2000/prob_stop_early_fut_p1.png, id=165, 3011.25pt x
- 1689.31125pt>
+<../p1_plots/batch_size_nb_2000/prob_stop_early_fut_p1.png, id=159, 3011.25pt x
+ 1454.43375pt>
 File: ../p1_plots/batch_size_nb_2000/prob_stop_early_fut_p1.png Graphic file (t
 ype png)
 <use ../p1_plots/batch_size_nb_2000/prob_stop_early_fut_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_2000/prob_stop_early_fut_p1.
-png  used on input line 421.
-(pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-<../p1_plots/batch_size_nb_2000/prob_stop_early_sup_p1.png, id=166, 3011.25pt x
+png  used on input line 411.
+(pdftex.def)             Requested size: 375.808pt x 181.51526pt.
+<../p1_plots/batch_size_nb_2000/prob_stop_early_sup_p1.png, id=160, 3011.25pt x
  1689.31125pt>
 File: ../p1_plots/batch_size_nb_2000/prob_stop_early_sup_p1.png Graphic file (t
 ype png)
 <use ../p1_plots/batch_size_nb_2000/prob_stop_early_sup_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_2000/prob_stop_early_sup_p1.
-png  used on input line 426.
+png  used on input line 416.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-[15 <../p1_plots/batch_size_nb_2000/prob_stop_early_p1.png>]
-<../p1_plots/batch_size_nb_2000/pvalue_p1.png, id=175, 3011.25pt x 1689.31125pt
+[15
+
+ <../p1_plots/batch_size_nb_2000/prob_stop_early_p1.png>] [16 <../p1_plots/batc
+h_size_nb_2000/prob_stop_early_fut_p1.png> <../p1_plots/batch_size_nb_2000/prob
+_stop_early_sup_p1.png>]
+<../p1_plots/batch_size_nb_3000/pvalue_p1.png, id=177, 3011.25pt x 1689.31125pt
 >
-File: ../p1_plots/batch_size_nb_2000/pvalue_p1.png Graphic file (type png)
-<use ../p1_plots/batch_size_nb_2000/pvalue_p1.png>
-Package pdftex.def Info: ../p1_plots/batch_size_nb_2000/pvalue_p1.png  used on 
-input line 438.
+File: ../p1_plots/batch_size_nb_3000/pvalue_p1.png Graphic file (type png)
+<use ../p1_plots/batch_size_nb_3000/pvalue_p1.png>
+Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/pvalue_p1.png  used on 
+input line 430.
 (pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[16 <../p1_plots/batch_size_nb_2000/prob_stop_early_fut_p1.png> <../p1_plots/ba
-tch_size_nb_2000/prob_stop_early_sup_p1.png>]
-<../p1_plots/batch_size_nb_2000/pvalue_fut_p1.png, id=185, 3011.25pt x 1689.311
+<../p1_plots/batch_size_nb_2000/pvalue_fut_p1.png, id=178, 3011.25pt x 1689.311
 25pt>
 File: ../p1_plots/batch_size_nb_2000/pvalue_fut_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_2000/pvalue_fut_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_2000/pvalue_fut_p1.png  used
- on input line 453.
+ on input line 445.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-<../p1_plots/batch_size_nb_2000/pvalue_sup_p1.png, id=186, 3011.25pt x 1689.311
+<../p1_plots/batch_size_nb_2000/pvalue_sup_p1.png, id=179, 3011.25pt x 1689.311
 25pt>
 File: ../p1_plots/batch_size_nb_2000/pvalue_sup_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_2000/pvalue_sup_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_2000/pvalue_sup_p1.png  used
- on input line 459.
+ on input line 451.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-[17 <../p1_plots/batch_size_nb_2000/pvalue_p1.png>]
-<../p1_plots/batch_size_nb_2000/RRRhat_p1.png, id=193, 3011.25pt x 1689.31125pt
+[17
+
+ <../p1_plots/batch_size_nb_3000/pvalue_p1.png>] [18 <../p1_plots/batch_size_nb
+_2000/pvalue_fut_p1.png> <../p1_plots/batch_size_nb_2000/pvalue_sup_p1.png>]
+<../p1_plots/batch_size_nb_2000/RRRhat_p1.png, id=195, 3011.25pt x 1689.31125pt
 >
 File: ../p1_plots/batch_size_nb_2000/RRRhat_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_2000/RRRhat_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_2000/RRRhat_p1.png  used on 
-input line 470.
+input line 464.
 (pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[18 <../p1_plots/batch_size_nb_2000/pvalue_fut_p1.png> <../p1_plots/batch_size_
-nb_2000/pvalue_sup_p1.png>]
-<../p1_plots/batch_size_nb_2000/RRRhat_fut_p1.png, id=203, 3011.25pt x 1689.311
+<../p1_plots/batch_size_nb_2000/RRRhat_fut_p1.png, id=196, 3011.25pt x 1689.311
 25pt>
 File: ../p1_plots/batch_size_nb_2000/RRRhat_fut_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_2000/RRRhat_fut_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_2000/RRRhat_fut_p1.png  used
- on input line 481.
+ on input line 475.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-<../p1_plots/batch_size_nb_2000/RRRhat_sup_p1.png, id=204, 3011.25pt x 1689.311
+<../p1_plots/batch_size_nb_2000/RRRhat_sup_p1.png, id=197, 3011.25pt x 1689.311
 25pt>
 File: ../p1_plots/batch_size_nb_2000/RRRhat_sup_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_2000/RRRhat_sup_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_2000/RRRhat_sup_p1.png  used
- on input line 487.
+ on input line 481.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-[19 <../p1_plots/batch_size_nb_2000/RRRhat_p1.png>]
-<../p1_plots/batch_size_nb_3000/type_1_error_p1.png, id=212, 3011.25pt x 1689.3
+[19
+
+ <../p1_plots/batch_size_nb_2000/RRRhat_p1.png>] [20 <../p1_plots/batch_size_nb
+_2000/RRRhat_fut_p1.png> <../p1_plots/batch_size_nb_2000/RRRhat_sup_p1.png>]
+<../p1_plots/batch_size_nb_3000/type_1_error_p1.png, id=214, 3011.25pt x 1689.3
 1125pt>
 File: ../p1_plots/batch_size_nb_3000/type_1_error_p1.png Graphic file (type png
 )
 <use ../p1_plots/batch_size_nb_3000/type_1_error_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/type_1_error_p1.png  us
-ed on input line 518.
+ed on input line 507.
 (pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[20 <../p1_plots/batch_size_nb_2000/RRRhat_fut_p1.png> <../p1_plots/batch_size_
-nb_2000/RRRhat_sup_p1.png>]
+[21
+
+ <../p1_plots/batch_size_nb_3000/type_1_error_p1.png>]
 <../p1_plots/batch_size_nb_3000/power_all_p1.png, id=224, 4516.875pt x 1689.311
 25pt>
 File: ../p1_plots/batch_size_nb_3000/power_all_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_3000/power_all_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/power_all_p1.png  used 
-on input line 527.
+on input line 518.
 (pdftex.def)             Requested size: 469.70258pt x 175.66876pt.
-<../p1_plots/batch_size_nb_3000/power_p1.png, id=225, 3011.25pt x 1689.31125pt>
+[22
 
-File: ../p1_plots/batch_size_nb_3000/power_p1.png Graphic file (type png)
-<use ../p1_plots/batch_size_nb_3000/power_p1.png>
-Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/power_p1.png  used on i
-nput line 534.
-(pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[21 <../p1_plots/batch_size_nb_3000/type_1_error_p1.png> <../p1_plots/batch_siz
-e_nb_3000/power_all_p1.png>]
-<../p1_plots/batch_size_nb_3000/exp_sample_size_p1.png, id=237, 3011.25pt x 168
+ <../p1_plots/batch_size_nb_3000/power_all_p1.png>]
+<../p1_plots/batch_size_nb_3000/exp_sample_size_p1.png, id=233, 3011.25pt x 168
 9.31125pt>
 File: ../p1_plots/batch_size_nb_3000/exp_sample_size_p1.png Graphic file (type 
 png)
 <use ../p1_plots/batch_size_nb_3000/exp_sample_size_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/exp_sample_size_p1.png 
- used on input line 543.
+ used on input line 529.
 (pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[22 <../p1_plots/batch_size_nb_3000/power_p1.png>]
-<../p1_plots/batch_size_nb_3000/prob_reach_max_size_p1.png, id=246, 3011.25pt x
- 1689.31125pt>
+[23
+
+ <../p1_plots/batch_size_nb_3000/exp_sample_size_p1.png>]
+<../p1_plots/batch_size_nb_3000/prob_reach_max_size_p1.png, id=242, 3011.25pt x
+ 1137.24875pt>
 File: ../p1_plots/batch_size_nb_3000/prob_reach_max_size_p1.png Graphic file (t
 ype png)
 <use ../p1_plots/batch_size_nb_3000/prob_reach_max_size_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/prob_reach_max_size_p1.
-png  used on input line 553.
-(pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-<../p1_plots/batch_size_nb_3000/prob_stop_early_p1.png, id=247, 3011.25pt x 168
+png  used on input line 541.
+(pdftex.def)             Requested size: 469.72556pt x 177.39967pt.
+[24
+
+ <../p1_plots/batch_size_nb_3000/prob_reach_max_size_p1.png>]
+<../p1_plots/batch_size_nb_3000/prob_stop_early_p1.png, id=251, 3011.25pt x 168
 9.31125pt>
 File: ../p1_plots/batch_size_nb_3000/prob_stop_early_p1.png Graphic file (type 
 png)
 <use ../p1_plots/batch_size_nb_3000/prob_stop_early_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/prob_stop_early_p1.png 
- used on input line 564.
+ used on input line 552.
 (pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[23 <../p1_plots/batch_size_nb_3000/exp_sample_size_p1.png> <../p1_plots/batch_
-size_nb_3000/prob_reach_max_size_p1.png>]
-<../p1_plots/batch_size_nb_3000/prob_stop_early_fut_p1.png, id=259, 3011.25pt x
- 1689.31125pt>
+<../p1_plots/batch_size_nb_3000/prob_stop_early_fut_p1.png, id=252, 3011.25pt x
+ 1454.43375pt>
 File: ../p1_plots/batch_size_nb_3000/prob_stop_early_fut_p1.png Graphic file (t
 ype png)
 <use ../p1_plots/batch_size_nb_3000/prob_stop_early_fut_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/prob_stop_early_fut_p1.
-png  used on input line 575.
-(pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-<../p1_plots/batch_size_nb_3000/prob_stop_early_sup_p1.png, id=260, 3011.25pt x
+png  used on input line 563.
+(pdftex.def)             Requested size: 375.808pt x 181.51526pt.
+<../p1_plots/batch_size_nb_3000/prob_stop_early_sup_p1.png, id=253, 3011.25pt x
  1689.31125pt>
 File: ../p1_plots/batch_size_nb_3000/prob_stop_early_sup_p1.png Graphic file (t
 ype png)
 <use ../p1_plots/batch_size_nb_3000/prob_stop_early_sup_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/prob_stop_early_sup_p1.
-png  used on input line 580.
+png  used on input line 568.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-[24 <../p1_plots/batch_size_nb_3000/prob_stop_early_p1.png>]
-<../p1_plots/batch_size_nb_3000/pvalue_p1.png, id=268, 3011.25pt x 1689.31125pt
->
+[25
+
+ <../p1_plots/batch_size_nb_3000/prob_stop_early_p1.png>] [26 <../p1_plots/batc
+h_size_nb_3000/prob_stop_early_fut_p1.png> <../p1_plots/batch_size_nb_3000/prob
+_stop_early_sup_p1.png>]
 File: ../p1_plots/batch_size_nb_3000/pvalue_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_3000/pvalue_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/pvalue_p1.png  used on 
-input line 592.
+input line 582.
 (pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[25 <../p1_plots/batch_size_nb_3000/prob_stop_early_fut_p1.png> <../p1_plots/ba
-tch_size_nb_3000/prob_stop_early_sup_p1.png>]
-<../p1_plots/batch_size_nb_3000/pvalue_fut_p1.png, id=279, 3011.25pt x 1689.311
+<../p1_plots/batch_size_nb_3000/pvalue_fut_p1.png, id=270, 3011.25pt x 1689.311
 25pt>
 File: ../p1_plots/batch_size_nb_3000/pvalue_fut_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_3000/pvalue_fut_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/pvalue_fut_p1.png  used
- on input line 607.
+ on input line 597.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-<../p1_plots/batch_size_nb_3000/pvalue_sup_p1.png, id=280, 3011.25pt x 1689.311
+<../p1_plots/batch_size_nb_3000/pvalue_sup_p1.png, id=271, 3011.25pt x 1689.311
 25pt>
 File: ../p1_plots/batch_size_nb_3000/pvalue_sup_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_3000/pvalue_sup_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/pvalue_sup_p1.png  used
- on input line 613.
+ on input line 603.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-[26 <../p1_plots/batch_size_nb_3000/pvalue_p1.png>]
-<../p1_plots/batch_size_nb_3000/RRRhat_p1.png, id=287, 3011.25pt x 1689.31125pt
+[27
+
+] [28 <../p1_plots/batch_size_nb_3000/pvalue_fut_p1.png> <../p1_plots/batch_siz
+e_nb_3000/pvalue_sup_p1.png>]
+<../p1_plots/batch_size_nb_3000/RRRhat_p1.png, id=286, 3011.25pt x 1689.31125pt
 >
 File: ../p1_plots/batch_size_nb_3000/RRRhat_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_3000/RRRhat_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/RRRhat_p1.png  used on 
-input line 624.
+input line 616.
 (pdftex.def)             Requested size: 469.72556pt x 263.51602pt.
-[27 <../p1_plots/batch_size_nb_3000/pvalue_fut_p1.png> <../p1_plots/batch_size_
-nb_3000/pvalue_sup_p1.png>]
-<../p1_plots/batch_size_nb_3000/RRRhat_fut_p1.png, id=297, 3011.25pt x 1689.311
+<../p1_plots/batch_size_nb_3000/RRRhat_fut_p1.png, id=287, 3011.25pt x 1689.311
 25pt>
 File: ../p1_plots/batch_size_nb_3000/RRRhat_fut_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_3000/RRRhat_fut_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/RRRhat_fut_p1.png  used
- on input line 635.
+ on input line 627.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-<../p1_plots/batch_size_nb_3000/RRRhat_sup_p1.png, id=298, 3011.25pt x 1689.311
+<../p1_plots/batch_size_nb_3000/RRRhat_sup_p1.png, id=288, 3011.25pt x 1689.311
 25pt>
 File: ../p1_plots/batch_size_nb_3000/RRRhat_sup_p1.png Graphic file (type png)
 <use ../p1_plots/batch_size_nb_3000/RRRhat_sup_p1.png>
 Package pdftex.def Info: ../p1_plots/batch_size_nb_3000/RRRhat_sup_p1.png  used
- on input line 641.
+ on input line 633.
 (pdftex.def)             Requested size: 375.808pt x 210.8283pt.
-[28 <../p1_plots/batch_size_nb_3000/RRRhat_p1.png>] [29 <../p1_plots/batch_size
-_nb_3000/RRRhat_fut_p1.png> <../p1_plots/batch_size_nb_3000/RRRhat_sup_p1.png>]
-(./appendix_new_simulations.aux)
+[29
+
+ <../p1_plots/batch_size_nb_3000/RRRhat_p1.png>] [30 <../p1_plots/batch_size_nb
+_3000/RRRhat_fut_p1.png> <../p1_plots/batch_size_nb_3000/RRRhat_sup_p1.png>] (.
+/appendix_new_simulations.aux)
 Package rerunfilecheck Info: File `appendix_new_simulations.out' has not change
 d.
-(rerunfilecheck)             Checksum: 20E7E8D4C5AE3C01A53CA37A756632C2;917.
+(rerunfilecheck)             Checksum: DFEB437BA7AE799B3A4893EFC19EA83B;1927.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 11575 strings out of 481885
- 183968 string characters out of 5930703
- 443983 words of memory out of 5000000
- 27573 multiletter control sequences out of 15000+600000
+ 11547 strings out of 481886
+ 182753 string characters out of 5930719
+ 443827 words of memory out of 5000000
+ 27551 multiletter control sequences out of 15000+600000
  580365 words of font info for 67 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,7n,66p,941b,552s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,7n,66p,929b,544s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/Users/jameswillard/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}
 </Users/jameswillard/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pf
 b></Users/jameswillard/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.
@@ -886,10 +894,10 @@ pfb></Users/jameswillard/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10
 .pfb></Users/jameswillard/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr1
 7.pfb></Users/jameswillard/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr
 9.pfb>
-Output written on appendix_new_simulations.pdf (29 pages, 9033136 bytes).
+Output written on appendix_new_simulations.pdf (30 pages, 8111419 bytes).
 PDF statistics:
- 359 PDF objects out of 1000 (max. 8388607)
- 236 compressed objects within 3 object streams
- 117 named destinations out of 1000 (max. 500000)
- 235 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 350 PDF objects out of 1000 (max. 8388607)
+ 234 compressed objects within 3 object streams
+ 111 named destinations out of 1000 (max. 500000)
+ 223 words of extra memory for PDF output out of 10000 (max. 10000000)
 

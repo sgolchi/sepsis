@@ -81,23 +81,23 @@
 \begin{document}
 \maketitle
 
-2020-10-10
+2020-10-14
 
 \hypertarget{stopping-with-moderately-permissive-outcome-p1}{%
 \subsection{Stopping with moderately permissive outcome
 (p1)}\label{stopping-with-moderately-permissive-outcome-p1}}
 
 \hypertarget{maximum-allowed-sample-size-of-12000-with-interim-analyses-conducted-every-1000-patients}{%
-\paragraph{Maximum allowed sample size of 12,000 with interim analyses
-conducted every 1,000
+\subsubsection{Maximum allowed sample size of 12,000 with interim
+analyses conducted every 1,000
 patients}\label{maximum-allowed-sample-size-of-12000-with-interim-analyses-conducted-every-1000-patients}}
 
 Both superiority and futility decisions were made with respect to the
-moderately permissive outcome (p1). Unless stated otherwise, the
-futility bound used was 0.4 and a probability threshold of 0.99 was
-required to stop for futility. The number of expected interim analyses
-can be thought of as the expected number of patients at trial
-termination divided by the batch size, which here is 1,000 patients.
+moderately permissive outcome (p1). The superiority and futility
+probability thresholds used were 0.975 and 0.99, respectively. The
+number of expected interim analyses can be thought of as the expected
+number of patients at trial termination divided by the batch size, which
+here is 1,000 patients.
 
 \hypertarget{type-i-error-false-positive-risk}{%
 \subparagraph{Type I error (false positive
@@ -113,7 +113,7 @@ approximately 10\% the superiority threshold 0.975.
 \captionsetup[figure]{font=small,labelfont=small}
 
 \begin{figure}
-  \caption{Overall type I error rate based on moderately permissive (p1) outcome based stopping rules.Observed type one error rate for each outcome is
+  \caption{Overall type I error rate based on moderately permissive (p1) outcome based stopping rules. Observed type one error rate for each outcome is
   presented by colored bars (see legend). Results by the three categories of control event rates are by rows. Results by the futility thresholds are
   presented on the x-axis.}
   \includegraphics{../p1_plots/batch_size_nb_1000/type_1_error_p1.png}
@@ -133,26 +133,16 @@ case scenario.
 
 \begin{figure}
   \caption{Power under the three relative risk reductions (RRR - upper column label) for each of the outcomes (lower column labels). 
-  Power estimates by control event rates are presented by the rows. Power estimates by the futility thresholds are presented by the bar color (see legend).}
+  Power estimates by control event rates are presented by the rows. Power estimates by the futility thresholds are presented on the x-axis}
   \includegraphics{../p1_plots/batch_size_nb_1000/power_all_p1.png}
 \end{figure}
 
-Figure 3. Under the true RRR=40\% and 60\%, power for outcomes p1 and p2
-is very high but decreases to as the RRR becomes less than 20\%. Power
-for outcome s is low for all scenarios, reaching roughly 25\% for a true
-RRR=60\% and the best case CER.
-
-\begin{figure}
-  \caption{Power under the three relative risk reductions (RRR - upper column label) for each of the outcomes (lower
-  column labels or legend). Observed power for each outcome is presented by colored bars. Power estimates by control
-  event rates are presented by the rows and correspond to a superiority threshold of 0.975.}
-  \includegraphics{../p1_plots/batch_size_nb_1000/power_p1.png}
-\end{figure}
+\clearpage
 
 \hypertarget{expected-sample-size}{%
 \subparagraph{Expected Sample Size}\label{expected-sample-size}}
 
-Figure 4 presents the expected (mean) sample size at trial termination.
+Figure 3 presents the expected (mean) sample size at trial termination.
 For true RRR=0, 10\% and 20\%, expected sample sizes were consistently
 high, albeit with some notable reductions associated with use of a
 RRR=40\% futility stopping threshold. For true of RRR=40\% and RRR=60\%,
@@ -161,42 +151,44 @@ expected sample sizes were lower and decreased as the CER improved
 
 \begin{figure}
   \caption{Expected sample size at trial termination. Results by control event scenarios are presented by rows. Results
-  by relative risk reductions are presented by columns. Results by futility thresholds are presented by the color of the bars (see legend).}
+  by relative risk reductions are presented by columns. Results by futility thresholds are presented on the x-axis}
   \includegraphics{../p1_plots/batch_size_nb_1000/exp_sample_size_p1.png}
 \end{figure}
+
+\clearpage
 
 \hypertarget{probability-of-reaching-maximum-sample-size}{%
 \paragraph{Probability of Reaching Maximum Sample
 Size}\label{probability-of-reaching-maximum-sample-size}}
 
-Figure 5 shows the probability of reaching the maximum allowed sample
+Figure 4 shows the probability of reaching the maximum allowed sample
 size of the trial. This probability was moderate to high for the true
 RRR=0, 10\% and 20\%, and generally decreased as the CER improved. For
 RRR=40\% and RRR=60\%, this probability was negligible for all cases.
 
 \begin{figure}
-  \caption{Probability of reaching maximum sample size for the three control event rates (CER – rows), four relative
-  risk reductions (RRR – columns), and three futility thresholds (legend).}
+  \caption{Probability of reaching maximum sample size for the three control event rates (CER – rows), relative
+  risk reductions (RRR – columns), and futility thresholds (x-axis).}
   \includegraphics{../p1_plots/batch_size_nb_1000/prob_reach_max_size_p1.png}
 \end{figure}
+
+\clearpage
 
 \hypertarget{probability-of-stopping-early}{%
 \paragraph{Probability of Stopping
 Early}\label{probability-of-stopping-early}}
 
 The probability of stopping early was obtained overall, for superiority
-and for futility. Figure 6 displays the overall probability of stopping
-early, Figure 7(a) displays the probability of stopping early for
-futility and figure 7(b) displays the probability of stopping early for
+and for futility. Figure 5 displays the overall probability of stopping
+early, Figure 6(a) displays the probability of stopping early for
+futility and figure 6(b) displays the probability of stopping early for
 superiority. The overall probability of stopping early is strongly
 positively correlated with the CER and RRR. When the simulated RRR=0\%,
 10\% and 20\%, the overall probability of stopping early is also highly
 correlated to the futility threshold.
 
 \begin{figure}
-  \caption{Probability of stopping early due to futility or superiority for the three control event rates (CER – rows),
-  four relative risk reductions (RRR – columns), three superiority thresholds (x axis) and three futility thresholds
-  (legend).}
+  \caption{Probability of stopping early due to futility or superiority for the three control event rates (CER – rows), relative risk reductions (RRR – columns), and futility thresholds (x-axis).}
   \includegraphics{../p1_plots/batch_size_nb_1000/prob_stop_early_p1.png}
 \end{figure}
 
@@ -219,7 +211,7 @@ this setting.
 \begin{figure}
 \centering
   \caption{Probability of stopping early due to futility, and stopping early due to superiority. Stopping probabilities
-  are presented for the three control event rates (CER – rows), four relative risk reductions (RRR – columns), and three futility thresholds (legend).}
+  are presented for the three control event rates (CER – rows), relative risk reductions (RRR – columns), and futility thresholds (x-axis).}
   \label{fig:fig}
   \begin{subfigure}{0.8\textwidth}
     \centering
@@ -233,14 +225,16 @@ this setting.
   \end{subfigure}
 \end{figure}
 
+\clearpage
+
 \hypertarget{p-values-at-trial-termination-when-a-true-effect-exists}{%
 \paragraph{P-values at trial termination when a true effect
 exists}\label{p-values-at-trial-termination-when-a-true-effect-exists}}
 
-Figure 8 presents the categorical distribution of p-values
+Figure 7 presents the categorical distribution of p-values
 (\textless{}5\%, 5-10\%, or \textgreater{}10\%) upon trial termination
-(stopping early or reaching max. allowed sample size). Figure 9(a) and
-9(b) presents the divide of p-values when stopping for futility (a) and
+(stopping early or reaching max. allowed sample size). Figure 8(a) and
+8(b) presents the divide of p-values when stopping for futility (a) and
 superiority (b), respectively.
 
 The overall probability of observing a p-value less than 5\% (i.e., a
@@ -252,14 +246,14 @@ outcomes p1 and p2. Outcome s has a greater proportion of p-values being
 \begin{figure}
   \caption{Overall probability at trial termination that the p-value (from Fisher’s exact test) at termination of the
   trial is below 5\%, between 5\% and 10\% and greater than 10\%. The rows represent the three control even rate scenarios
-  and the three columns present the three relative risk reduction scenarios.}
+  and the columns present the relative risk reduction scenarios.}
   \includegraphics{../p1_plots/batch_size_nb_1000/pvalue_p1.png}
 \end{figure}
 
 In the situations where the trial is stopped early for futility, the
 small counts for RRR=40\% and 60\% can be explained by the low
 probability of stopping early for futility under these scenarios (Figure
-7(a)). When the trial is stopped for superiority when the true RRR=40\%
+6(a)). When the trial is stopped for superiority when the true RRR=40\%
 or 60\%, close to 100\% of all p-values for outcomes p1 and p2 are
 smaller than 5\%. Under all RRR and CER scenarios, the majority of
 p-values for outcomes s remain greater than 10\%.
@@ -268,7 +262,7 @@ p-values for outcomes s remain greater than 10\%.
 \centering
   \caption{Probability that the p-value (from Fisher’s exact test) at termination of the trial is below 5\%, between 5\%
   and 10\% and greater than 10\% for cases where trial was (a) stopped for futility; (b) stopped for superiority. The
-  rows represent the three control even rate scenarios and the three columns present the three relative risk reduction
+  rows represent the three control even rate scenarios and the columns present the relative risk reduction
   scenarios. Note: the denominator in each figure is the number of simulations (not the number of trials stopped for
   futility (a) or superiority (b), and thus, the proportions do not add up to 100\% within one figure. Further, (a) and
   (b) do not include simulations where the trial went to the max. allowed sample size. The bars should be interpreted
@@ -286,19 +280,21 @@ p-values for outcomes s remain greater than 10\%.
   \end{subfigure}
 \end{figure}
 
+\clearpage
+
 \hypertarget{relative-risk-reduction-estimates-at-trial-termination}{%
 \paragraph{Relative risk reduction estimates at trial
 termination}\label{relative-risk-reduction-estimates-at-trial-termination}}
 
-Figure 10 presents the distribution of relative risk reduction estimates
-upon trial termination. Figure 11(a) and 11(b) present the distribution
+Figure 9 presents the distribution of relative risk reduction estimates
+upon trial termination. Figure 10(a) and 10(b) present the distribution
 of relative risk reduction estimates from trials stopped early for
 futility and superiority, respectively. As expected, the estimates of p1
 and p2 exhibit much larger precision.
 
 \begin{figure}
   \caption{Distribution of relative risk reduction estimates (smoothed by a kernel density estimator) for the three
-  control event rates (CER – rows), four relative risk reductions (RRR – columns) and the three outcomes (legend).}
+  control event rates (CER – rows), relative risk reductions (RRR – columns) and the three outcomes (legend).}
   \includegraphics{../p1_plots/batch_size_nb_1000/RRRhat_p1.png}
 \end{figure}
 
@@ -319,7 +315,7 @@ all scenarios but has moderate upward bias for true RRR=0, 10\%, and
 \begin{figure}
 \centering
   \caption{Distribution of relative risk reduction estimates after stopping early for (a) futility; (b) superiority.
-  Results are presented for the three control event rates by rows, four relative risk reductions (by columns) and the
+  Results are presented for the three control event rates by rows, relative risk reductions (by columns) and the
   three outcomes (legend).}
   \begin{subfigure}{0.8\textwidth}
     \centering
@@ -334,86 +330,80 @@ all scenarios but has moderate upward bias for true RRR=0, 10\%, and
   \end{subfigure}
 \end{figure}
 
-\hypertarget{stopping-with-moderately-permissive-outcome-p1-1}{%
-\subsection{Stopping with moderately permissive outcome
-(p1)}\label{stopping-with-moderately-permissive-outcome-p1-1}}
+\clearpage
 
 \hypertarget{maximum-allowed-sample-size-of-12000-with-interim-analyses-conducted-every-2000-patients}{%
-\paragraph{Maximum allowed sample size of 12,000 with interim analyses
-conducted every 2,000
+\subsubsection{Maximum allowed sample size of 12,000 with interim
+analyses conducted every 2,000
 patients}\label{maximum-allowed-sample-size-of-12000-with-interim-analyses-conducted-every-2000-patients}}
 
 Both superiority and futility decisions were made with respect to the
-moderately permissive outcome (p1). Unless stated otherwise, the
-futility bound used was 0.4 and a probability threshold of 0.99 was
-required to stop for futility. The number of expected interim analyses
-can be thought of as the expected number of patients at trial
-determination divided by the batch size, which here is 2,000 patients.
-The plots below can be interpretated in the same manner as those above.
+moderately permissive outcome (p1). The superiority and futility
+probability thresholds used were 0.975 and 0.99, respectively. The
+number of expected interim analyses can be thought of as the expected
+number of patients at trial termination divided by the batch size, which
+here is 2,000 patients.
 
 \hypertarget{type-i-error-false-positive-risk-1}{%
 \subparagraph{Type I error (false positive
 risk)}\label{type-i-error-false-positive-risk-1}}
 
-\captionsetup[figure]{font=small,labelfont=small}
-
 \begin{figure}
-  \caption{Overall type I error rate based on moderately permissive (p1) outcome based stopping rules.Observed type one error rate for each outcome is
+  \caption{Overall type I error rate based on moderately permissive (p1) outcome based stopping rules. Observed type one error rate for each outcome is
   presented by colored bars (see legend). Results by the three categories of control event rates are by rows. Results by the futility thresholds are
   presented on the x-axis.}
   \includegraphics{../p1_plots/batch_size_nb_2000/type_1_error_p1.png}
 \end{figure}
+
+\clearpage
 
 \hypertarget{power-1}{%
 \subparagraph{Power}\label{power-1}}
 
 \begin{figure}
   \caption{Power under the three relative risk reductions (RRR - upper column label) for each of the outcomes (lower column labels). 
-  Power estimates by control event rates are presented by the rows. Power estimates by the futility thresholds are presented by the bar color (see legend).}
+  Power estimates by control event rates are presented by the rows. Power estimates by the futility thresholds are presented on the x-axis}
   \includegraphics{../p1_plots/batch_size_nb_2000/power_all_p1.png}
 \end{figure}
 
-\begin{figure}
-  \caption{Power under the three relative risk reductions (RRR - upper column label) for each of the outcomes (lower
-  column labels or legend). Observed power for each outcome is presented by colored bars. Power estimates by control
-  event rates are presented by the rows and correspond to a superiority threshold of 0.975.}
-  \includegraphics{../p1_plots/batch_size_nb_2000/power_p1.png}
-\end{figure}
+\clearpage
 
 \hypertarget{expected-sample-size-1}{%
 \subparagraph{Expected Sample Size}\label{expected-sample-size-1}}
 
 \begin{figure}
   \caption{Expected sample size at trial termination. Results by control event scenarios are presented by rows. Results
-  by relative risk reductions are presented by columns. Results by futility thresholds are presented by the color of the bars (see legend).}
+  by relative risk reductions are presented by columns. Results by futility thresholds are presented on the x-axis}
   \includegraphics{../p1_plots/batch_size_nb_2000/exp_sample_size_p1.png}
 \end{figure}
 
+\clearpage
+
 \hypertarget{probability-of-reaching-maximum-sample-size-1}{%
-\paragraph{Probability of Reaching Maximum Sample
+\subparagraph{Probability of Reaching Maximum Sample
 Size}\label{probability-of-reaching-maximum-sample-size-1}}
 
 \begin{figure}
-  \caption{Probability of reaching maximum sample size for the three control event rates (CER – rows), four relative
-  risk reductions (RRR – columns), and three futility thresholds (legend).}
+  \caption{Probability of reaching maximum sample size for the three control event rates (CER – rows), relative
+  risk reductions (RRR – columns), and futility thresholds (x-axis).}
   \includegraphics{../p1_plots/batch_size_nb_2000/prob_reach_max_size_p1.png}
 \end{figure}
 
+\clearpage
+
 \hypertarget{probability-of-stopping-early-1}{%
-\paragraph{Probability of Stopping
+\subparagraph{Probability of Stopping
 Early}\label{probability-of-stopping-early-1}}
 
 \begin{figure}
-  \caption{Probability of stopping early due to futility or superiority for the three control event rates (CER – rows),
-  four relative risk reductions (RRR – columns), three superiority thresholds (x axis) and three futility thresholds
-  (legend).}
+  \caption{Probability of stopping early due to futility or superiority for the three control event rates (CER – rows), relative risk reductions (RRR – columns), and futility thresholds (x-axis).}
   \includegraphics{../p1_plots/batch_size_nb_2000/prob_stop_early_p1.png}
 \end{figure}
 
 \begin{figure}
 \centering
   \caption{Probability of stopping early due to futility, and stopping early due to superiority. Stopping probabilities
-  are presented for the three control event rates (CER – rows), four relative risk reductions (RRR – columns), and three futility thresholds (legend).}
+  are presented for the three control event rates (CER – rows), relative risk reductions (RRR – columns), and futility thresholds (x-axis).}
   \label{fig:fig}
   \begin{subfigure}{0.8\textwidth}
     \centering
@@ -427,22 +417,24 @@ Early}\label{probability-of-stopping-early-1}}
   \end{subfigure}
 \end{figure}
 
+\clearpage
+
 \hypertarget{p-values-at-trial-termination-when-a-true-effect-exists-1}{%
-\paragraph{P-values at trial termination when a true effect
+\subparagraph{P-values at trial termination when a true effect
 exists}\label{p-values-at-trial-termination-when-a-true-effect-exists-1}}
 
 \begin{figure}
   \caption{Overall probability at trial termination that the p-value (from Fisher’s exact test) at termination of the
   trial is below 5\%, between 5\% and 10\% and greater than 10\%. The rows represent the three control even rate scenarios
-  and the three columns present the three relative risk reduction scenarios.}
-  \includegraphics{../p1_plots/batch_size_nb_2000/pvalue_p1.png}
+  and the columns present the relative risk reduction scenarios.}
+  \includegraphics{../p1_plots/batch_size_nb_3000/pvalue_p1.png}
 \end{figure}
 
 \begin{figure}
 \centering
   \caption{Probability that the p-value (from Fisher’s exact test) at termination of the trial is below 5\%, between 5\%
   and 10\% and greater than 10\% for cases where trial was (a) stopped for futility; (b) stopped for superiority. The
-  rows represent the three control even rate scenarios and the three columns present the three relative risk reduction
+  rows represent the three control even rate scenarios and the columns present the relative risk reduction
   scenarios. Note: the denominator in each figure is the number of simulations (not the number of trials stopped for
   futility (a) or superiority (b), and thus, the proportions do not add up to 100\% within one figure. Further, (a) and
   (b) do not include simulations where the trial went to the max. allowed sample size. The bars should be interpreted
@@ -460,20 +452,22 @@ exists}\label{p-values-at-trial-termination-when-a-true-effect-exists-1}}
   \end{subfigure}
 \end{figure}
 
+\clearpage
+
 \hypertarget{relative-risk-reduction-estimates-at-trial-termination-1}{%
-\paragraph{Relative risk reduction estimates at trial
+\subparagraph{Relative risk reduction estimates at trial
 termination}\label{relative-risk-reduction-estimates-at-trial-termination-1}}
 
 \begin{figure}
   \caption{Distribution of relative risk reduction estimates (smoothed by a kernel density estimator) for the three
-  control event rates (CER – rows), four relative risk reductions (RRR – columns) and the three outcomes (legend).}
+  control event rates (CER – rows), relative risk reductions (RRR – columns) and the three outcomes (legend).}
   \includegraphics{../p1_plots/batch_size_nb_2000/RRRhat_p1.png}
 \end{figure}
 
 \begin{figure}
 \centering
   \caption{Distribution of relative risk reduction estimates after stopping early for (a) futility; (b) superiority.
-  Results are presented for the three control event rates by rows, four relative risk reductions (by columns) and the
+  Results are presented for the three control event rates by rows, relative risk reductions (by columns) and the
   three outcomes (legend).}
   \begin{subfigure}{0.8\textwidth}
     \centering
@@ -488,86 +482,80 @@ termination}\label{relative-risk-reduction-estimates-at-trial-termination-1}}
   \end{subfigure}
 \end{figure}
 
-\hypertarget{stopping-with-moderately-permissive-outcome-p1-2}{%
-\subsection{Stopping with moderately permissive outcome
-(p1)}\label{stopping-with-moderately-permissive-outcome-p1-2}}
+\clearpage
 
 \hypertarget{maximum-allowed-sample-size-of-12000-with-interim-analyses-conducted-every-3000-patients}{%
-\paragraph{Maximum allowed sample size of 12,000 with interim analyses
-conducted every 3,000
+\subsubsection{Maximum allowed sample size of 12,000 with interim
+analyses conducted every 3,000
 patients}\label{maximum-allowed-sample-size-of-12000-with-interim-analyses-conducted-every-3000-patients}}
 
 Both superiority and futility decisions were made with respect to the
-moderately permissive outcome (p1). Unless stated otherwise, the
-futility bound used was 0.4 and a probability threshold of 0.99 was
-required to stop for futility. The number of expected interim analyses
-can be thought of as the expected number of patients at trial
-determination divided by the batch size, which here is 3,000 patients.
-The plots below can be interpretated in the same manner as those above.
+moderately permissive outcome (p1). The superiority and futility
+probability thresholds used were 0.975 and 0.99, respectively. The
+number of expected interim analyses can be thought of as the expected
+number of patients at trial termination divided by the batch size, which
+here is 3,000 patients.
 
 \hypertarget{type-i-error-false-positive-risk-2}{%
 \subparagraph{Type I error (false positive
 risk)}\label{type-i-error-false-positive-risk-2}}
 
-\captionsetup[figure]{font=small,labelfont=small}
-
 \begin{figure}
-  \caption{Overall type I error rate based on moderately permissive (p1) outcome based stopping rules.Observed type one error rate for each outcome is
+  \caption{Overall type I error rate based on moderately permissive (p1) outcome based stopping rules. Observed type one error rate for each outcome is
   presented by colored bars (see legend). Results by the three categories of control event rates are by rows. Results by the futility thresholds are
   presented on the x-axis.}
   \includegraphics{../p1_plots/batch_size_nb_3000/type_1_error_p1.png}
 \end{figure}
+
+\clearpage
 
 \hypertarget{power-2}{%
 \subparagraph{Power}\label{power-2}}
 
 \begin{figure}
   \caption{Power under the three relative risk reductions (RRR - upper column label) for each of the outcomes (lower column labels). 
-  Power estimates by control event rates are presented by the rows. Power estimates by the futility thresholds are presented by the bar color (see legend).}
+  Power estimates by control event rates are presented by the rows. Power estimates by the futility thresholds are presented on the x-axis}
   \includegraphics{../p1_plots/batch_size_nb_3000/power_all_p1.png}
 \end{figure}
 
-\begin{figure}
-  \caption{Power under the three relative risk reductions (RRR - upper column label) for each of the outcomes (lower
-  column labels or legend). Observed power for each outcome is presented by colored bars. Power estimates by control
-  event rates are presented by the rows and correspond to a superiority threshold of 0.975.}
-  \includegraphics{../p1_plots/batch_size_nb_3000/power_p1.png}
-\end{figure}
+\clearpage
 
 \hypertarget{expected-sample-size-2}{%
 \subparagraph{Expected Sample Size}\label{expected-sample-size-2}}
 
 \begin{figure}
   \caption{Expected sample size at trial termination. Results by control event scenarios are presented by rows. Results
-  by relative risk reductions are presented by columns. Results by futility thresholds are presented by the color of the bars (see legend).}
+  by relative risk reductions are presented by columns. Results by futility thresholds are presented on the x-axis}
   \includegraphics{../p1_plots/batch_size_nb_3000/exp_sample_size_p1.png}
 \end{figure}
 
+\clearpage
+
 \hypertarget{probability-of-reaching-maximum-sample-size-2}{%
-\paragraph{Probability of Reaching Maximum Sample
+\subparagraph{Probability of Reaching Maximum Sample
 Size}\label{probability-of-reaching-maximum-sample-size-2}}
 
 \begin{figure}
-  \caption{Probability of reaching maximum sample size for the three control event rates (CER – rows), four relative
-  risk reductions (RRR – columns), and three futility thresholds (legend).}
+  \caption{Probability of reaching maximum sample size for the three control event rates (CER – rows), relative
+  risk reductions (RRR – columns), and futility thresholds (x-axis).}
   \includegraphics{../p1_plots/batch_size_nb_3000/prob_reach_max_size_p1.png}
 \end{figure}
 
+\clearpage
+
 \hypertarget{probability-of-stopping-early-2}{%
-\paragraph{Probability of Stopping
+\subparagraph{Probability of Stopping
 Early}\label{probability-of-stopping-early-2}}
 
 \begin{figure}
-  \caption{Probability of stopping early due to futility or superiority for the three control event rates (CER – rows),
-  four relative risk reductions (RRR – columns), three superiority thresholds (x axis) and three futility thresholds
-  (legend).}
+  \caption{Probability of stopping early due to futility or superiority for the three control event rates (CER – rows), relative risk reductions (RRR – columns), and futility thresholds (x-axis).}
   \includegraphics{../p1_plots/batch_size_nb_3000/prob_stop_early_p1.png}
 \end{figure}
 
 \begin{figure}
 \centering
   \caption{Probability of stopping early due to futility, and stopping early due to superiority. Stopping probabilities
-  are presented for the three control event rates (CER – rows), four relative risk reductions (RRR – columns), and three futility thresholds (legend).}
+  are presented for the three control event rates (CER – rows), relative risk reductions (RRR – columns), and futility thresholds (x-axis).}
   \label{fig:fig}
   \begin{subfigure}{0.8\textwidth}
     \centering
@@ -581,14 +569,16 @@ Early}\label{probability-of-stopping-early-2}}
   \end{subfigure}
 \end{figure}
 
+\clearpage
+
 \hypertarget{p-values-at-trial-termination-when-a-true-effect-exists-2}{%
-\paragraph{P-values at trial termination when a true effect
+\subparagraph{P-values at trial termination when a true effect
 exists}\label{p-values-at-trial-termination-when-a-true-effect-exists-2}}
 
 \begin{figure}
   \caption{Overall probability at trial termination that the p-value (from Fisher’s exact test) at termination of the
   trial is below 5\%, between 5\% and 10\% and greater than 10\%. The rows represent the three control even rate scenarios
-  and the three columns present the three relative risk reduction scenarios.}
+  and the columns present the relative risk reduction scenarios.}
   \includegraphics{../p1_plots/batch_size_nb_3000/pvalue_p1.png}
 \end{figure}
 
@@ -596,7 +586,7 @@ exists}\label{p-values-at-trial-termination-when-a-true-effect-exists-2}}
 \centering
   \caption{Probability that the p-value (from Fisher’s exact test) at termination of the trial is below 5\%, between 5\%
   and 10\% and greater than 10\% for cases where trial was (a) stopped for futility; (b) stopped for superiority. The
-  rows represent the three control even rate scenarios and the three columns present the three relative risk reduction
+  rows represent the three control even rate scenarios and the columns present the relative risk reduction
   scenarios. Note: the denominator in each figure is the number of simulations (not the number of trials stopped for
   futility (a) or superiority (b), and thus, the proportions do not add up to 100\% within one figure. Further, (a) and
   (b) do not include simulations where the trial went to the max. allowed sample size. The bars should be interpreted
@@ -614,20 +604,22 @@ exists}\label{p-values-at-trial-termination-when-a-true-effect-exists-2}}
   \end{subfigure}
 \end{figure}
 
+\clearpage
+
 \hypertarget{relative-risk-reduction-estimates-at-trial-termination-2}{%
-\paragraph{Relative risk reduction estimates at trial
+\subparagraph{Relative risk reduction estimates at trial
 termination}\label{relative-risk-reduction-estimates-at-trial-termination-2}}
 
 \begin{figure}
   \caption{Distribution of relative risk reduction estimates (smoothed by a kernel density estimator) for the three
-  control event rates (CER – rows), four relative risk reductions (RRR – columns) and the three outcomes (legend).}
+  control event rates (CER – rows), relative risk reductions (RRR – columns) and the three outcomes (legend).}
   \includegraphics{../p1_plots/batch_size_nb_3000/RRRhat_p1.png}
 \end{figure}
 
 \begin{figure}
 \centering
   \caption{Distribution of relative risk reduction estimates after stopping early for (a) futility; (b) superiority.
-  Results are presented for the three control event rates by rows, four relative risk reductions (by columns) and the
+  Results are presented for the three control event rates by rows, relative risk reductions (by columns) and the
   three outcomes (legend).}
   \begin{subfigure}{0.8\textwidth}
     \centering
