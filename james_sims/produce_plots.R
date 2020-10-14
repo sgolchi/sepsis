@@ -4,12 +4,15 @@ library(reshape2)
 library(ggplot2)
 library(dplyr)
 
+### Note: Dan has requested for all futility bounds >= 0.3 not be included, so only include 0.1 and 0.2
+
+
 ### For batch size nb = 1000
 
 
 load("./james_sims/sim_runs_nb_1000.Rdata")
 
-dftt <- dftt %>% filter(!(fut %in% c(0.4, 0.6)))
+dftt <- dftt %>% filter(!(fut %in% c(0.3, 0.4, 0.6)))
 dftt$CER = NA
 dftt$CER[dftt$s == .002] = 'worst'
 dftt$CER[dftt$s == .01] = 'base'
@@ -115,7 +118,7 @@ ggplot(dft, aes(x = RRR_hat, color = outcome)) + geom_density(size = .8) +
         strip.text.x = element_text(size = 14, face = 'bold'),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 14, face = 'bold'))
-# There were 2963 out of 112500 rows removed for not staying in range of (-1, 1)
+# There were 724 out of 45000 rows removed for not staying in range of (-1, 1)
 ggsave(file = 'RRRhat_p1.png', path = 'james_sims/p1_plots/batch_size_nb_1000', width = 10)
 
 ### RRR_hat when stopping for futility on p1
@@ -131,8 +134,8 @@ ggplot(dft1, aes(x = RRR_hat, color = outcome)) + geom_density(size = .8) +
         strip.text.x = element_text(size = 14, face = 'bold'),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 14, face = 'bold'))
-# Removed 1653 of 19521 rows not in range of (-1, 1)
-ggsave(file = 'RRRhat_futp1.png', path = 'james_sims/p1_plots/batch_size_nb_1000', width = 10)
+# Removed 147 of 1428 rows not in range of (-1, 1)
+ggsave(file = 'RRRhat_fut_p1.png', path = 'james_sims/p1_plots/batch_size_nb_1000', width = 10)
 
 ### RRR_hat when stopping for superiority on p1
 
@@ -147,7 +150,7 @@ ggplot(dft2, aes(x = RRR_hat, color = outcome)) + geom_density(size = .8) +
         strip.text.x = element_text(size = 14, face = 'bold'),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 14, face = 'bold'))
-# Removed 1185 of 67065 rows not in range (-1, 1)
+# Removed 466 of 28323 rows not in range (-1, 1)
 ggsave(file = 'RRRhat_sup_p1.png', path = 'james_sims/p1_plots/batch_size_nb_1000', width = 10)
 
 #ggplot(dft, aes(x = event.rate, fill = outcome)) + geom_histogram() + facet_grid(fut ~ sup)
@@ -155,33 +158,39 @@ ggsave(file = 'RRRhat_sup_p1.png', path = 'james_sims/p1_plots/batch_size_nb_100
 #   facet_grid(CER ~ RRR, labeller = label_both)
 
 # For two arm trial don't include /3?
-ggplot(dft, aes(x = sup, y = Nt, fill = fut)) +
+#ggplot(dft, aes(x = sup, y = Nt, fill = fut)) +
+ggplot(dft, aes(x = fut, y = Nt, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar",position = position_dodge(), alpha = .8) +
   facet_grid(CER ~ RRR, labeller = label_both) + ylab('Nt') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
-  xlab('superiority threshold') + ylab('expected sample size at trial termination') +
+  scale_fill_brewer() +
+  theme_dark() +
+  xlab('futility threshold') +
+  ylab('expected sample size at trial termination') +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
+        #legend.text = element_text(size = 14),
+        #legend.title = element_text(size = 14, face = 'bold'))
 ggsave(file = 'exp_sample_size_p1.png', path = 'james_sims/p1_plots/batch_size_nb_1000', width = 10)
 
-ggplot(dft0, aes(x = outcome, y = power, fill = outcome)) +
-  stat_summary(fun.y="mean", geom="bar", alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) +
-  theme(axis.text=element_text(size=12),
-        axis.title=element_text(size=14,face="bold"),
-        strip.text.y = element_text(size = 14, face = 'bold'),
-        strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
-ggsave(file = 'power_p1.png', path = 'james_sims/p1_plots/batch_size_nb_1000', width = 10)
+### This is redundant given the above
+# ggplot(dft0, aes(x = outcome, y = power, fill = outcome)) +
+#   stat_summary(fun.y="mean", geom="bar", alpha = .8) +
+#   facet_grid(CER ~ RRR, labeller = label_both) +
+#   theme(axis.text=element_text(size=12),
+#         axis.title=element_text(size=14,face="bold"),
+#         strip.text.y = element_text(size = 14, face = 'bold'),
+#         strip.text.x = element_text(size = 14, face = 'bold'),
+#         legend.text = element_text(size = 14),
+#         legend.title = element_text(size = 14, face = 'bold'))
+# ggsave(file = 'power_p1.png', path = 'james_sims/p1_plots/batch_size_nb_1000', width = 10)
 
 ggplot(dft00, aes(x = fut, y = power, fill = outcome)) +
   stat_summary(fun.y="mean", geom="bar", position = position_dodge(), alpha = .8) + ylab('type I error rate') +
-  facet_grid(CER ~ sup, labeller = label_both) + xlab('futility threshold') +
+  facet_wrap(vars(CER), nrow = 3, labeller = label_both, strip.position = "right") + xlab('futility threshold') +
+  #facet_grid(CER ~ sup, labeller = label_both) + xlab('futility threshold') +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
@@ -190,69 +199,78 @@ ggplot(dft00, aes(x = fut, y = power, fill = outcome)) +
         legend.title = element_text(size = 14, face = 'bold'))
 ggsave(file = 'type_1_error_p1.png', path = 'james_sims/p1_plots/batch_size_nb_1000', width = 10)
 
-ggplot(dft, aes(x = sup, y = early, fill = fut)) +
+ggplot(dft, aes(x = fut, y = early, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar", position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR, labeller = label_both) + xlab('futility threshold') +
   ylab('probability of stopping early') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() +
+  theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
 ggsave(file = 'prob_stop_early_p1.png', path = 'james_sims/p1_plots/batch_size_nb_1000', width = 10)
 
-ggplot(dft, aes(x = sup, y = futstop, fill = fut)) +
+ggplot(dft, aes(x =  fut, y = futstop, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar",position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR, labeller = label_both) + xlab('futility threshold') +
   ylab('probability of stopping early for futility') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() +
+  theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
 ggsave(file = 'prob_stop_early_fut_p1.png', path = 'james_sims/p1_plots/batch_size_nb_1000', width = 10)
 
-ggplot(dft, aes(x = sup, y = supstop, fill = fut)) +
+ggplot(dft %>% filter(!(RRR %in% c(0))), aes(x = fut, y = supstop, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar",position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR, labeller = label_both) + xlab('futility threshold') +
   ylab('probability of stopping early for superiority') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() + theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
 ggsave(file = 'prob_stop_early_sup_p1.png', path = 'james_sims/p1_plots/batch_size_nb_1000', width = 10)
 
-ggplot(dft, aes(x = sup, y = reachmax, fill = fut)) +
+ggplot(dft, aes(x = fut, y = reachmax, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar", position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR, labeller = label_both) + xlab('futility threshold') +
   ylab('probability of reaching max sample size') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() + theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
 ggsave(file = 'prob_reach_max_size_p1.png', path = 'james_sims/p1_plots/batch_size_nb_1000', width = 10)
 
-ggplot(dft0, aes(x = sup, y = power, fill = fut)) +
+
+RRR.labs <- paste0("RRR: ", levels(dft0$RRR))
+names(RRR.labs) <- c(as.numeric(levels(dft0$RRR)))
+
+CER.labs <- paste0("CER: ", levels(dft0$CER))
+names(CER.labs) <- levels(dft0$CER)
+
+outcome.labs <- levels(dft0$outcome)
+names(outcome.labs) <- levels(dft0$outcome)
+
+ggplot(dft0, aes(x = fut, y = power, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar", position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR*outcome, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR * outcome,
+             labeller = labeller(RRR = RRR.labs, CER = CER.labs, outcome = outcome.labs)) +
+  xlab('futility threshold') +
   ylab('power') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() + theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
-        strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        strip.text.x = element_text(size = 12, face = 'bold'),
+        legend.position = "none")
 ggsave(file = 'power_all_p1.png', path = 'james_sims/p1_plots/batch_size_nb_1000', width = 15)
 
 #---------------------------------------------------------------------------------------------------------------------------------#
@@ -261,10 +279,9 @@ ggsave(file = 'power_all_p1.png', path = 'james_sims/p1_plots/batch_size_nb_1000
 
 #---------------------------------------------------------------------------------------------------------------------------------#
 
-
 load("./james_sims/sim_runs_nb_2000.Rdata")
 
-dftt <- dftt %>% filter(!(fut %in% c(0.4, 0.6)))
+dftt <- dftt %>% filter(!(fut %in% c(0.3, 0.4, 0.6)))
 dftt$CER = NA
 dftt$CER[dftt$s == .002] = 'worst'
 dftt$CER[dftt$s == .01] = 'base'
@@ -370,7 +387,7 @@ ggplot(dft, aes(x = RRR_hat, color = outcome)) + geom_density(size = .8) +
         strip.text.x = element_text(size = 14, face = 'bold'),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 14, face = 'bold'))
-# There were 2003 out of 112500 rows removed for not staying in range of (-1, 1)
+# There were 546 out of 45000 rows removed for not staying in range of (-1, 1)
 ggsave(file = 'RRRhat_p1.png', path = 'james_sims/p1_plots/batch_size_nb_2000', width = 10)
 
 ### RRR_hat when stopping for futility on p1
@@ -386,7 +403,7 @@ ggplot(dft1, aes(x = RRR_hat, color = outcome)) + geom_density(size = .8) +
         strip.text.x = element_text(size = 14, face = 'bold'),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 14, face = 'bold'))
-# Removed 1083 of 19521 rows not in range of (-1, 1)
+# Removed 117 of 1428 rows not in range of (-1, 1)
 ggsave(file = 'RRRhat_fut_p1.png', path = 'james_sims/p1_plots/batch_size_nb_2000', width = 10)
 
 ### RRR_hat when stopping for superiority on p1
@@ -402,41 +419,27 @@ ggplot(dft2, aes(x = RRR_hat, color = outcome)) + geom_density(size = .8) +
         strip.text.x = element_text(size = 14, face = 'bold'),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 14, face = 'bold'))
-# Removed 791 of 67065 rows not in range (-1, 1)
+# Removed 319 of 27261 rows not in range (-1, 1)
 ggsave(file = 'RRRhat_sup_p1.png', path = 'james_sims/p1_plots/batch_size_nb_2000', width = 10)
 
-#ggplot(dft, aes(x = event.rate, fill = outcome)) + geom_histogram() + facet_grid(fut ~ sup)
-# ggplot(dft, aes(x = Nt, fill = sup)) + geom_bar(position = position_dodge()) +
-#   facet_grid(CER ~ RRR, labeller = label_both)
-
-# For two arm trial don't include /3?
-ggplot(dft, aes(x = sup, y = Nt, fill = fut)) +
+ggplot(dft, aes(x = fut, y = Nt, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar",position = position_dodge(), alpha = .8) +
   facet_grid(CER ~ RRR, labeller = label_both) + ylab('Nt') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
-  xlab('superiority threshold') + ylab('expected sample size at trial termination') +
+  scale_fill_brewer() +
+  theme_dark() +
+  xlab('futility threshold') +
+  ylab('expected sample size at trial termination') +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
 ggsave(file = 'exp_sample_size_p1.png', path = 'james_sims/p1_plots/batch_size_nb_2000', width = 10)
-
-ggplot(dft0, aes(x = outcome, y = power, fill = outcome)) +
-  stat_summary(fun.y="mean", geom="bar", alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) +
-  theme(axis.text=element_text(size=12),
-        axis.title=element_text(size=14,face="bold"),
-        strip.text.y = element_text(size = 14, face = 'bold'),
-        strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
-ggsave(file = 'power_p1.png', path = 'james_sims/p1_plots/batch_size_nb_2000', width = 10)
 
 ggplot(dft00, aes(x = fut, y = power, fill = outcome)) +
   stat_summary(fun.y="mean", geom="bar", position = position_dodge(), alpha = .8) + ylab('type I error rate') +
-  facet_grid(CER ~ sup, labeller = label_both) + xlab('futility threshold') +
+  facet_wrap(vars(CER), nrow = 3, labeller = label_both, strip.position = "right") + xlab('futility threshold') +
+  #facet_grid(CER ~ sup, labeller = label_both) + xlab('futility threshold') +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
@@ -445,69 +448,78 @@ ggplot(dft00, aes(x = fut, y = power, fill = outcome)) +
         legend.title = element_text(size = 14, face = 'bold'))
 ggsave(file = 'type_1_error_p1.png', path = 'james_sims/p1_plots/batch_size_nb_2000', width = 10)
 
-ggplot(dft, aes(x = sup, y = early, fill = fut)) +
+ggplot(dft, aes(x = fut, y = early, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar", position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR, labeller = label_both) + xlab('futility threshold') +
   ylab('probability of stopping early') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() +
+  theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
 ggsave(file = 'prob_stop_early_p1.png', path = 'james_sims/p1_plots/batch_size_nb_2000', width = 10)
 
-ggplot(dft, aes(x = sup, y = futstop, fill = fut)) +
+ggplot(dft, aes(x =  fut, y = futstop, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar",position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR, labeller = label_both) + xlab('futility threshold') +
   ylab('probability of stopping early for futility') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() +
+  theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
 ggsave(file = 'prob_stop_early_fut_p1.png', path = 'james_sims/p1_plots/batch_size_nb_2000', width = 10)
 
-ggplot(dft, aes(x = sup, y = supstop, fill = fut)) +
+ggplot(dft %>% filter(!(RRR %in% c(0))), aes(x = fut, y = supstop, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar",position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR, labeller = label_both) + xlab('futility threshold') +
   ylab('probability of stopping early for superiority') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() + theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
 ggsave(file = 'prob_stop_early_sup_p1.png', path = 'james_sims/p1_plots/batch_size_nb_2000', width = 10)
 
-ggplot(dft, aes(x = sup, y = reachmax, fill = fut)) +
+ggplot(dft, aes(x = fut, y = reachmax, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar", position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR, labeller = label_both) + xlab('futility threshold') +
   ylab('probability of reaching max sample size') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() + theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
 ggsave(file = 'prob_reach_max_size_p1.png', path = 'james_sims/p1_plots/batch_size_nb_2000', width = 10)
 
-ggplot(dft0, aes(x = sup, y = power, fill = fut)) +
+
+RRR.labs <- paste0("RRR: ", levels(dft0$RRR))
+names(RRR.labs) <- c(as.numeric(levels(dft0$RRR)))
+
+CER.labs <- paste0("CER: ", levels(dft0$CER))
+names(CER.labs) <- levels(dft0$CER)
+
+outcome.labs <- levels(dft0$outcome)
+names(outcome.labs) <- levels(dft0$outcome)
+
+ggplot(dft0, aes(x = fut, y = power, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar", position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR*outcome, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR * outcome,
+             labeller = labeller(RRR = RRR.labs, CER = CER.labs, outcome = outcome.labs)) +
+  xlab('futility threshold') +
   ylab('power') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() + theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
-        strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        strip.text.x = element_text(size = 12, face = 'bold'),
+        legend.position = "none")
 ggsave(file = 'power_all_p1.png', path = 'james_sims/p1_plots/batch_size_nb_2000', width = 15)
 
 #---------------------------------------------------------------------------------------------------------------------------------#
@@ -516,10 +528,9 @@ ggsave(file = 'power_all_p1.png', path = 'james_sims/p1_plots/batch_size_nb_2000
 
 #---------------------------------------------------------------------------------------------------------------------------------#
 
-
 load("./james_sims/sim_runs_nb_3000.Rdata")
 
-dftt <- dftt %>% filter(!(fut %in% c(0.4, 0.6)))
+dftt <- dftt %>% filter(!(fut %in% c(0.3, 0.4, 0.6)))
 dftt$CER = NA
 dftt$CER[dftt$s == .002] = 'worst'
 dftt$CER[dftt$s == .01] = 'base'
@@ -625,7 +636,7 @@ ggplot(dft, aes(x = RRR_hat, color = outcome)) + geom_density(size = .8) +
         strip.text.x = element_text(size = 14, face = 'bold'),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 14, face = 'bold'))
-# There were 1487 out of 112500 rows removed for not staying in range of (-1, 1)
+# There were 421 out of 45000 rows removed for not staying in range of (-1, 1)
 ggsave(file = 'RRRhat_p1.png', path = 'james_sims/p1_plots/batch_size_nb_3000', width = 10)
 
 ### RRR_hat when stopping for futility on p1
@@ -641,7 +652,7 @@ ggplot(dft1, aes(x = RRR_hat, color = outcome)) + geom_density(size = .8) +
         strip.text.x = element_text(size = 14, face = 'bold'),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 14, face = 'bold'))
-# Removed 798 of 19521 rows not in range of (-1, 1)
+# Removed 89 of 1218 rows not in range of (-1, 1)
 ggsave(file = 'RRRhat_fut_p1.png', path = 'james_sims/p1_plots/batch_size_nb_3000', width = 10)
 
 ### RRR_hat when stopping for superiority on p1
@@ -657,41 +668,27 @@ ggplot(dft2, aes(x = RRR_hat, color = outcome)) + geom_density(size = .8) +
         strip.text.x = element_text(size = 14, face = 'bold'),
         legend.text = element_text(size = 14),
         legend.title = element_text(size = 14, face = 'bold'))
-# Removed 541 of 67065 rows not in range (-1, 1)
+# Removed 218 of 26400 rows not in range (-1, 1)
 ggsave(file = 'RRRhat_sup_p1.png', path = 'james_sims/p1_plots/batch_size_nb_3000', width = 10)
 
-#ggplot(dft, aes(x = event.rate, fill = outcome)) + geom_histogram() + facet_grid(fut ~ sup)
-# ggplot(dft, aes(x = Nt, fill = sup)) + geom_bar(position = position_dodge()) +
-#   facet_grid(CER ~ RRR, labeller = label_both)
-
-# For two arm trial don't include /3?
-ggplot(dft, aes(x = sup, y = Nt, fill = fut)) +
+ggplot(dft, aes(x = fut, y = Nt, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar",position = position_dodge(), alpha = .8) +
   facet_grid(CER ~ RRR, labeller = label_both) + ylab('Nt') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
-  xlab('superiority threshold') + ylab('expected sample size at trial termination') +
+  scale_fill_brewer() +
+  theme_dark() +
+  xlab('futility threshold') +
+  ylab('expected sample size at trial termination') +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
 ggsave(file = 'exp_sample_size_p1.png', path = 'james_sims/p1_plots/batch_size_nb_3000', width = 10)
-
-ggplot(dft0, aes(x = outcome, y = power, fill = outcome)) +
-  stat_summary(fun.y="mean", geom="bar", alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) +
-  theme(axis.text=element_text(size=12),
-        axis.title=element_text(size=14,face="bold"),
-        strip.text.y = element_text(size = 14, face = 'bold'),
-        strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
-ggsave(file = 'power_p1.png', path = 'james_sims/p1_plots/batch_size_nb_3000', width = 10)
 
 ggplot(dft00, aes(x = fut, y = power, fill = outcome)) +
   stat_summary(fun.y="mean", geom="bar", position = position_dodge(), alpha = .8) + ylab('type I error rate') +
-  facet_grid(CER ~ sup, labeller = label_both) + xlab('futility threshold') +
+  facet_wrap(vars(CER), nrow = 3, labeller = label_both, strip.position = "right") + xlab('futility threshold') +
+  #facet_grid(CER ~ sup, labeller = label_both) + xlab('futility threshold') +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
@@ -700,70 +697,86 @@ ggplot(dft00, aes(x = fut, y = power, fill = outcome)) +
         legend.title = element_text(size = 14, face = 'bold'))
 ggsave(file = 'type_1_error_p1.png', path = 'james_sims/p1_plots/batch_size_nb_3000', width = 10)
 
-ggplot(dft, aes(x = sup, y = early, fill = fut)) +
+ggplot(dft, aes(x = fut, y = early, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar", position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR, labeller = label_both) + xlab('futility threshold') +
   ylab('probability of stopping early') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() +
+  theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
 ggsave(file = 'prob_stop_early_p1.png', path = 'james_sims/p1_plots/batch_size_nb_3000', width = 10)
 
-ggplot(dft, aes(x = sup, y = futstop, fill = fut)) +
+ggplot(dft, aes(x =  fut, y = futstop, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar",position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR, labeller = label_both) + xlab('futility threshold') +
   ylab('probability of stopping early for futility') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() +
+  theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
 ggsave(file = 'prob_stop_early_fut_p1.png', path = 'james_sims/p1_plots/batch_size_nb_3000', width = 10)
 
-ggplot(dft, aes(x = sup, y = supstop, fill = fut)) +
+ggplot(dft %>% filter(!(RRR %in% c(0))), aes(x = fut, y = supstop, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar",position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR, labeller = label_both) + xlab('futility threshold') +
   ylab('probability of stopping early for superiority') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() + theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
 ggsave(file = 'prob_stop_early_sup_p1.png', path = 'james_sims/p1_plots/batch_size_nb_3000', width = 10)
 
-ggplot(dft, aes(x = sup, y = reachmax, fill = fut)) +
+ggplot(dft, aes(x = fut, y = reachmax, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar", position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR, labeller = label_both) + xlab('futility threshold') +
   ylab('probability of reaching max sample size') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() + theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
         strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        legend.position = "none")
 ggsave(file = 'prob_reach_max_size_p1.png', path = 'james_sims/p1_plots/batch_size_nb_3000', width = 10)
 
-ggplot(dft0, aes(x = sup, y = power, fill = fut)) +
+
+RRR.labs <- paste0("RRR: ", levels(dft0$RRR))
+names(RRR.labs) <- c(as.numeric(levels(dft0$RRR)))
+
+CER.labs <- paste0("CER: ", levels(dft0$CER))
+names(CER.labs) <- levels(dft0$CER)
+
+outcome.labs <- levels(dft0$outcome)
+names(outcome.labs) <- levels(dft0$outcome)
+
+ggplot(dft0, aes(x = fut, y = power, fill = fut)) +
   stat_summary(fun.y="mean", geom="bar", position = position_dodge(), alpha = .8) +
-  facet_grid(CER ~ RRR*outcome, labeller = label_both) + xlab('superiority threshold') +
+  facet_grid(CER ~ RRR * outcome,
+             labeller = labeller(RRR = RRR.labs, CER = CER.labs, outcome = outcome.labs)) +
+  xlab('futility threshold') +
   ylab('power') +
-  scale_fill_brewer(name = "futility\nthreshold") + theme_dark() +
+  scale_fill_brewer() + theme_dark() +
   theme(axis.text=element_text(size=12),
         axis.title=element_text(size=14,face="bold"),
         strip.text.y = element_text(size = 14, face = 'bold'),
-        strip.text.x = element_text(size = 14, face = 'bold'),
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14, face = 'bold'))
+        strip.text.x = element_text(size = 12, face = 'bold'),
+        legend.position = "none")
 ggsave(file = 'power_all_p1.png', path = 'james_sims/p1_plots/batch_size_nb_3000', width = 15)
+
+
+
+
+
+
+
 
 
 
