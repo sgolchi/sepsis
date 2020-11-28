@@ -1,0 +1,356 @@
+\documentclass[12pt]{article}
+		\title{A Bayesian Adaptive Design for Clinical Trials with Composite Outcomes and Low Event Rates}
+
+
+\pdfoutput=1
+\date{}
+	\usepackage{amsmath,latexsym, graphics,graphicx,showexpl,amsthm,amsfonts,fullpage}
+\usepackage[left=1in,top=1in,right=1in,nohead]{geometry}
+%\usepackage{algorithmic,float,alg}
+%\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage[margin=10pt,font={small},labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage{bbm} 
+\usepackage{setspace}
+%\usepackage[countmax]{subfloat}
+\usepackage{natbib}
+\usepackage[titletoc]{appendix}
+\usepackage{epstopdf}
+%\usepackage{ednote}
+\usepackage[pdftex,bookmarks,colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage{algpseudocode,algorithm}
+\usepackage{authblk}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{etoolbox}
+\usepackage{setspace}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\AtBeginEnvironment{thebibliography}{\linespread{1.5}\selectfont}
+
+%% watermark
+%\usepackage{graphicx,eso-pic,xcolor}
+%\makeatletter
+%\AddToShipoutPicture{%
+%\setlength{\@tempdimb}{.5\paperwidth}%
+%\setlength{\@tempdimc}{.5\paperheight}%
+%\setlength{\unitlength}{1pt}%
+%\put(\strip@pt\@tempdimb,\strip@pt\@tempdimc){%
+%    \makebox(-500,200){\rotatebox{90}{\textcolor[gray]{0.70}%
+%       {\Large \textsf{Preprint, January, 2015}}}}
+%  }%
+%}
+%\makeatother
+%\author[1]{Shirin Golchi\thanks{shirin.golchi@mcgill.ca}}
+%
+%\affil[1]{Department of Epidemiology, Biostatistics and Occupational Health, McGill University}
+
+\linespread{1.5}	
+	\begin{document}
+
+	\maketitle
+
+
+\begin{abstract}
+We propose a Bayesian adaptive design for clinical trials where the outcome of interest is the risk of a relatively rare disease or condition and the incidence rate varies according to different operational definition of events. The proposed design incorporates different case definitions of the outcome of interest that vary in stringency. Composite stopping rules are proposed according to Bayesian superiority and futility results. A variety of stopping rules, and design configurations are compared through an extensive simulation study.
+\end{abstract}
+
+\noindent%
+{\it Keywords: composite outcomes, stopping rules, futility, superiority, simulations}  
+
+
+\section{Introduction}
+\label{sec:intro}
+
+Bayesian adaptive designs for clinical trials  \citep{CheShe05, BerryBook} have become popular over the recent years due to the flexibility and efficiency that they offer over conventional fixed size randomized clinical trials \citep{HarPar16, WarWeiHan15, SatWanLog16}. These designs can be considered a sequential decision process where adjustments to the trial design components may be made according to the accumulating evidence at preplanned interim analyses. Use of stopping decision rules is facilitated through sequential posterior updates within the Bayesian framework. Stopping decision criteria are defined based on Bayesian probability statements whose validity is not affected by small sample sizes and repeated testing. 
+
+Adaptive designs are specially appealing in situations where a considerable amount of uncertainty is associated with the underlying assumptions, namely the effect size and baseline distribution of outcomes. We specifically consider the case where the outcome of interest is an event with a relatively low risk of occurrence at baseline. In addition, there exist different case definitions that can result in a varying baseline risk assumptions. For example, as the primary outcome of interest consider neonatal sepsis, a clinical syndrome characterized by systemic inflammation, hemodynamic instability and multi-organ dysfunction that is presumed or confirmed to be caused by a systemic invasive bacterial, viral, or fungal infection, and which carries a high risk of morbidity and
+mortality \citep{ShaSanSto17, Wyn16}. Diagnosis of neonatal sepsis is challenging because of the subtle and protean manifestations of
+serious illness in young infants.  The variability in diagnostic terms and lack of gold-standard case definitions for neonatal sepsis make it difficult to compare incidence, severity, etiology or outcomes of disease across studies
+and settings \citep{SinDeuSey16}. Sepsis, culture-confirmed sepsis and culture-negative sepsis are widely used in clinical practice and often reported in the literature, but definitions for these syndromes have varied widely \citep{ShaSanSto17, Wyn16, VerButCai16, VerSeaFit2017}. 
+
+We consider a clinical trial with the primary goal of preventing neonatal sepsis. Table~\ref{t1} contains three case definitions for the event of interest  that decrease in stringency from top to bottom. The more permissive the case definition, the higher will be the corresponding base risk of the event. While use of a more stringent definition for the primary outcome may be of interest for clinical precision, the corresponding low event rates can result in low statistical power in detecting the effect of an intervention in a clinical trial setting. Asides from the variability in case definitions, reliable estimates of the baseline risk of sepsis according to each of these definitions is difficult to obtain. This uncertainty makes the selection of the primary event definition challenging.
+
+In this paper, we propose a flexible Bayesian adaptive design where the primary outcome is monitored with respect to any number of available (or of interest) case definitions. Early stopping decisions can be defined based on a combination of case definitions. For example, the decision of stopping early for efficacy is made according ot the most stringent case definition while the decision of stopping early for futility may be made with respect to a more permissive outcome definition. The operating characteristics of the proposed design for variations of the stopping rules as well as a variety other design parameters and assumptions are explored through an extensive simulation study which will be used as a guide to inform the final clinical trial design.
+
+The remaining of the paper is organized as follows. We describe the Bayesian adaptive trial design in Section~\ref{Sec:design}. Section~\ref{Sec:sims} includes the simulation study that aims at exploring the design operating characteristics and a discussion of potential deviations from the proposed approach is provided in Section~\ref{Sec:dis}.
+
+\begin{table}
+\begin{tabular} {|l | p{10.5cm}|}
+	\hline
+	Outcome & Definition\\
+	\hline
+Stringent ($s$) &	Non-injury related death
+\newline
+                        Blood culture confirmed sepsis
+\newline
+                        Possibly urine culture confirmed sepsis
+\\
+    \hline
+Moderately permissive ($p_1$)	& Middle ground between $s$ and $p_2$
+\newline
+                                                     definition of $s$ + Physician confirmed
+\newline
+                                                     Removal of vague symptoms allowed for $p_2$/pSBI
+\newline
+                                                     (e.g. remove fast breathing)
+\\
+      \hline
+Highly permissive ($p_2$)	& Panigrahi outcome or similar/WHO definition
+\newline                                     
+                                                definition of $p_1$ +  clinical sepsis, pSBI
+\newline
+                                               Possibly diagnosed by community health worker at onset rather than physician upon hospital visit
+\\
+        \hline
+\end{tabular}
+
+   \caption{ Description of composite outcomes}
+\label{t1}  
+\end{table}
+
+
+
+\section{Design}\label{Sec:design}
+
+Consider a two-arm clinical trial to assess the effect of intervention A in decreasing the risk of a relatively rare syndrome such as sepsis, with three case definitions as described in Table~\ref{t1}. Equally distanced interim looks are planned according to the accumulating number of enrollees for whom the primary outcome is observed. For example, the first interim analysis is performed when the primary outcome is observed for 1000 participants, the second interim analysis is performed when the outcome is observed for 2000 participants and so on. The frequency of interim looks is determined according to design operating characteristics explored under various simulation scenarios.
+
+The interim analysis in performed in the Bayesian framework. Given that the primary outcome is dichotomous, the likelihood can be written as,
+\begin{equation}
+l(\mathbf{y}\mid \pi_1, \pi_2) = \prod \left(\pi_1^{y_n}(1-\pi_1)^{1-y_n}\right)^{1-a_n}\left(\pi_2^{y_n}(1-\pi_2)^{1-y_n}\right)^{a_n}
+\end{equation}
+where  $\pi_1$ is the probability of event under the control arm, $\pi_2$ (where $\pi_2<\pi_1$ under the alternative hypothesis) is the probability of event under the intervention arm, and $y_n$ and $a_n$ denote the outcome and arm assignment for participant $n$. If an event is observed for participant $n$, $y_n = 1$, otherwise, $y_n = 0$. If participant $n$ is assigned to the intervention arm $a_n=1$, otherwise $a_n=0$.
+
+The quantity of interest is the relative risk of event among those who receive the intervention to the control group, 
+\begin{equation*}
+RR = \frac{\pi_2}{\pi_1}.
+\end{equation*}
+The null and alternative hypotheses are formulated respectively as,
+\begin{equation*}
+H_0: RR \geq 1, \hskip 40pt H_A: RR <1.
+\end{equation*}
+Therefore the stopping decision criteria are defined based on the posterior probability of the alternative hypothesis which is derived from the posterior distribution of RR that, in turn, is obtained from the posterior distributions of $\pi_1$ and $\pi_2$ in a Beta-binomial model. More specifically, at any interim analysis, efficacy is concluded if the posterior probability that the relative risk is below 1 is higher than a specified threshold,
+\begin{equation}
+P\left(RR < 1 \mid \mathbf{y} \right)>t_s.
+\end{equation}
+
+Likewise, futility can be defined based on the posterior distribution of $RR$. For example, one may consider  $RR> RR_f = 0.9$ an unimportant effect and therefore define futility with respect to the posterior probability of such a  result,
+\begin{equation}
+P\left(RR >RR_f\mid \mathbf{y} \right)>t_f
+\end{equation}
+where $RR_f<1$ is referred to as the futility boundary and $t_f$ as the futility probability threshold. While unlikely in practice, in theory, superiority and futility as defined above are not mutually exclusive. Therefore, to be rigorous, we define futility as 
+\begin{equation}
+\label{fut}
+P\left(RR >RR_f\mid \mathbf{y} \right)>t_f \hskip 10pt \text{and} \hskip 10pt P(RR<1\mid \mathbf{y})\leq t_s.
+\end{equation}
+
+\subsection{Composite stopping rules}
+The posterior probability of the relative risk may be obtained according to any of the case definitions of events. Denoting the vector of outcomes with respect to the case definitions presented in Table~\ref{t1} by $\mathbf{y}_s$,  $\mathbf{y}_{p_1}$ and $\mathbf{y}_{p_2}$, we may define the stopping criteria at an interim analysis as follows, 
+\begin{itemize}
+	\item[-] Stop for superiority with respect to $\mathbf{y}_s$, i.e. if $P(RR<1\mid \mathbf{y}_s)> t_s$;
+	\item[-] Stop for futility with respect to $\mathbf{y}_{p_1}$, i.e. if $P(RR> RR_f \mid \mathbf{y}_{p_2})> t_f$.
+\end{itemize}
+The advantage of a composite decision rule is to be able to prioritize certain decisions with respect to their importance. For example, the above stopping rule requires a significant amount of evidence with respect to the most stringent outcome to conclude efficacy. On the other hand futility may be assessed with respect to a more permissive outcome since if the trial is futile with respect to a more probable event it is most likely futile according to a stringent outcome. However, meeting the decision criteria with respect the stringent outcome requires much larger sample size. 
+
+A variety of stopping rules are explored via simulations. In Section~\ref{Sec:sims} we only present results for the stopping criteria that are defined only according to the moderately permissive case definition $p_1$.
+
+\subsection{Sample size and frequency of interim analysis}
+The final trial size in an adaptive design that allows for early stopping is a random variable. Sample size considerations are therefore different than that of fixed size trials. Factors that affect the final trial size include the number and spacing of interim analysis. Frequent interim analyses result in more flexibility since it allows for more opportunities of making stopping decisions. However, higher chance of stopping translates to higher probability of a false positive. 
+
+Another challenge in planning interim analyses is the follow-up time or the time it takes for the primary outcome to be obtained. It is common to plan interim analyses when responses are available for a certain number of participants. This approach is preferred from a statistical power analysis perspective since it keeps the interim sample sizes fixed. However, it results in uncertainty in the actual time of interim analyses since it depends on the enrolment progress. Planning interim analyses according to real time may appear more straightforward from a planning perspective but it can result in unequal spacing of interim analyses and varying interim sample sizes that have not been accounted for in power analysis. We take the former approach and keep the interim sample sizes fixed. 
+
+Although the final trial size is a random quantity in an adaptive design, a maximum allowable sample size needs to be specified to prevent prolongation of the trial beyond budget constraints. If the stopping criteria are not met at any of the planned interim analyses, the trial is stopped when the specified maximum allowable sample size is reached.
+
+The frequency of interim looks is, therefore, specified by the maximum allowable sample size and the interim sample size. For example if a total of 12,000 participants is largest affordable trial size and interim analyses are to be performed when the outcome is available in batches of size 3,000, the design will allow up to three interim analyses. The optimal frequency of interim looks is explored in the simulation study.
+
+\subsection{Design operating characteristics}
+\label{doc}
+Similar to fixed trial designs, Bayesian adaptive designs are assessed with respect to their operating characteristics including but not limited to power and false positive rate. The definition of power and false positive rate for Bayesian adaptive trials is in principle unchanged. However, statistical significance is defined with respect to the posterior probabilities whose sampling distributions are generally not known resulting in a power function that is not analytically tractable. 
+
+Specifically, power is defined as the probability of concluding efficacy either at any of the planned interim looks or at the final analyses for a given value of RR under the alternative hypothesis, e.g. $RR = 0.8$. Analogously, false positive rate is the probability of concluding concluding efficacy either at any of the planned interim looks or at the final analyses for the value of RR under the null hypothesis, i.e. $RR = 1$.
+
+In addition to power and false positive rate, other operating characteristics may be relevant in a Bayesian adaptive trial. For example, the probability of concluding futility under the null and alternative hypotheses, the probability of stopping early or stopping at a specific interim look as well as probability of reaching the maximum affordable sample size. Note that these probability statements should not be confused with the posterior probability statements that are the basis of decision making. In other words, power analysis for Bayesian adaptive trials involves evaluating functions that are defined as a two layer probability statement, the inner layer is driven from the posterior distribution of the model parameters while the outer layer is obtained from the sampling distribution of the test statistics which are the posterior probabilities of superiority or futility. 
+
+Therefore, extensive simulation studies are required to evaluate various design operating characteristics for a variety of design parameters and assumptions. In the following section we describe the underlying assumptions, design configurations and the data generating procedure for a typical simulation study for design and planning of Bayesian adaptive trials.
+
+
+\section{Simulation study}\label{Sec:sims}
+
+\subsection{Inputs}
+
+As explained above, the operating characteristics of the proposed design needs to be investigated through simulations. An effective simulation study is one that explores a wide range of assumptions and design parameters, especially those that parametrize the decision rules. These can be considered as the simulation inputs. The set of assumptions and parameters that constitute our simulation scenarios are as follows.
+
+Considering that the outcome of interest has a relatively low rate of occurrence, especially with respect to some case definitions, the assumed control event risks (CER) play an important role in power and other important operating characteristics. We consider three sets of assumptions for each case definition that represent a worst case scenario corresponding to very low event probabilities, a base case scenario representing relatively moderate event probabilities and a best case scenario that represents the largest realistic event probabilities that can be assumed. Table~\ref{t2} shows these three sets of values for CER.
+
+\begin{table}
+	\centering
+	\begin{tabular} {c| c  c  c  }
+	
+		\hline
+		
+	scenario  &$\pi_s$ &	$\pi_{p_1}$ & $\pi_{p_2}$   \\
+		\hline
+	worst 	&0.002 & 0.02 & 0.09 \\
+	base  &0.01 & 0.05 & 0.12	\\
+	best  &0.015 & 0.08 & 0.15 \\
+		\hline
+	\end{tabular}
+	
+	\caption{ Control event risk (CER) assumptions.}
+	\label{t2}  
+\end{table}
+
+In addition, a range of RR values, including the ``no effect" assumption, are explored. Specifically, $RR\in (1, 0.9, 0.8, 0.6, 0.4)$. 
+
+The superiority and futility probability thresholds and futility bounds are important design parameters whose optimal values should be specified to achieve desired operating characteristics. The simulation design should therefore explore a range of values for these parameters. Our simulation study includes three values for the superiority probability threshold, $t_s = 0.95, 0.975, 0.99$ and two values for the futility bound $RR_f = 0.1, 0.2$. The futility probability threshold is held fixed at $t_f = 0.99$.  
+
+In addition, the frequency of interim looks is varied to perform the analyses at batches of 1,000, 2,000 and 3,000 observed outcomes. The maximum allowable sample size is held fixed at 12,000. 
+
+As for the stopping criteria, the following set of rules are considered:
+\begin{enumerate}
+	\item Stop for superiority with respect to  $s$ and for futility with respect to $p_2$
+	\item Stop for superiority and futility with respect to $p_2$
+	\item Stop for superiority and futility with respect to $p_1$
+	\end{enumerate}
+
+The combination of the above configurations results in 810 simulation scenarios. The trial is simulated for 500 iterations for each of these scenarios to estimate the design operating characteristics. We present results only for a subset of these simulation scenarios in the manuscript and provide the complete results in Appendix A.
+
+
+
+
+\subsection{Correlation structure and data generating process
+}
+Data for the simulation study are generated according to the underlying assumptions regarding the three composite outcomes described in Table~\ref{t1}. Based on the case definitions, highest event rates are expected to be observed according to the highly permissive outcome $Y_{p_2}$, while the strict definition of the stringent outcome $Y_s$ results in low event rates. In addition, every case that is considered an event under the definition of the stringent outcome is also an event under permissive outcomes, and likewise, any event under $Y_{p_1}$ is an event under $Y_{p_2}$. Suppose that the event rates for the three outcomes, $Y_s$, $Y_{p_1}$ and $Y_{p_2}$, are denoted by $\pi_s$, $\pi_{p_1}$and $\pi_{p_2}$, respectively. The outcomes with respect to the three case definitions are generated as follows,
+\begin{align}
+&Y_s\sim \text{Bernoulli}( \pi_s ),
+\nonumber\\
+&Z_{p_1}\sim \text{Bernoulli}\left(\frac{\pi_{p_1}- \pi_s}{1-\pi_s}\right), \hskip 33pt Y_{p_1} = Y_s+(1-Y_s)Z_{p_1},  \nonumber
+\\
+&  Z_{p_2}\sim \text{Bernoulli}\left(\frac{\pi_{p_2}- \pi_{p_1 }}{1-\pi_{p_1 } }\right),\hskip 29ptY_{p_2} = Y_{p_1}+(1-Y_{p_1 })Z_{p_2}.
+\end{align}
+
+
+\subsection{Outputs}
+
+The simulation output includes a variety of measures that guide the selection of design parameters. A number of these measures were discussed in Section~\ref{doc} as design operating characteristics. In the following we provide a complete list of measures generated by the simulation study. 
+
+{\bf Power} is estimated as the proportion of times that a statistically significant result was obtained under the scenarios where $RR<1$, regardless of the trial being terminated early or reaching maximum sample size. {\bf False positive rate} is estimated in the same fashion but for the case that $RR = 1$. While power and false positive rate refer to probability of significance with respect to the primary outcome, i.e., the case definition with respect to which the corresponding stopping criteria are defined, these probabilities are estimated for all three case definitions for each simulation scenario.
+
+{\bf Probability of futility} is estimated as the proportion of times that futility is concluded according to the futility criterion defined in (\ref{fut}) either at an interim look or at the final analysis. Probability of concluding futility becomes negligible for smaller values of RR and therefore cannot be estimated with precision using simulations.
+
+{\bf Probability of stopping early} is estimated as the proportion of times that the trial is terminated before reaching the maximum sample size due to either a superiority or futility result. This probability is further broken down into the {\bf probability of stopping early for superiority} and {\bf probability of stopping early for futility} the latter of which suffers from lack of precision in some cases. Similarly, {\bf probability of reaching maximum sample size} can be obtained as the proportion of times that the trial could not be stopped at any interim look, i.e. 
+$$1-P(\text{stopping early})$$
+
+{\bf Expected sample size at trial termination} is obtained as the average of trial sizes for each simulation scenario. Note that the trial size at the time of termination is a multiple of interim sample sizes. Therefore, the expected sample size represents the trial size that is expected to arise on average and not in a single trial. 
+
+{\bf Sampling distribution of relative risk estimates} is obtained as the distribution of posterior means of relative risks. The posterior mean of RR  is estimated as the average of a sample of RR values drawn by sampling the risks under each arm from the respective posterior distributions. The estimates are obtained for the three case definitions for each simulation scenario.
+
+{\bf P-values} for a Fisher's exact test are obtained for every iteration. While the analysis and decision making primarily relies on posterior distributions and probabilities, the result of a frequentist test can provide insight regarding the performance of the Bayesian adaptive design.
+
+
+\subsection{Results}
+
+The results of the simulation study including all simulation scenarios and outputs discussed above are provided in Appendix A. In this section, we provide select graphs for a design that employs the third set of stopping rules - stopping for superiority and futility with respect to $p_1$- and allows for interim analyses at every 3,000 participant data.  Key conclusions that can guide specification of design components are discussed. 
+
+Figure~\ref{fig:power} shows the estimated power for the three outcomes across different simulation scenarios arising from the combination of values for RR, CER and superiority thresholds. The futility threshold is held fixed at 0.1 as it appeared to not make a difference in the estimated power. As expected, power decreases as the effect diminishes, i.e., RR gets closer to 1. The rate of decline is higher under lower CER with practically no power for the stringent outcome $s$. A larger superiority probability threshold in general results in lower power. However, the difference is visible only under weaker effects (RR = 0.8, 0.9).
+
+Based on these observations, it would be unrealistic to power the trial with respect to the stringent case definition. For an RR of 60\% or smaller the design has sufficient power with respect to either of the more permissive outcome definitions. For smaller effect sizes the choice between $p_1$ and $p_2$ can make a considerable difference specially if a more stringent superiority stopping rule is employed.
+
+\begin{figure}[t]
+
+		\centering
+		\includegraphics[width=1\textwidth]{figures/power_pp01}
+		\caption{Estimated power across simulation scenarios. On the X axis are the increasing values of RR (decreasing effect size) and on the Y axis is the estimate of power. The column panels represent the three assumed set of values for CER presented in Table~\ref{t2} and the row panels represent three values for superiority probability threshold. The colors/line types/dot shapes refer to the three outcome definitions.}
+		\label{fig:power}
+
+\end{figure}
+
+The estimates of false positive rates are presented in Figure~\ref{fig:alpha}. An immediate observation is that the probability of a false positive result is higher for $p_1$, i.e., the outcome with respect to which superiority stopping decision is made. The inflation of false positives for $p_1$ is the result of interim stopping for superiority at ``random highs" of probability of superiority for this outcome. Note that interim false positives are as likely for the other two outcomes but the trial is not stopped according to these outcomes. Only false positives at the final analysis are counted for $s$ and $p_2$. Clearly, increasing the superiority probability threshold helps control the type I error rate at a lower level. A superiority threshold of 0.99\% guarantees a false positive rate of below 5\% across simulation scenarios. A higher futility bound is expected to decrease the chance of a false positive result as it increases the chance of stopping the trial early for futility. This appears to be the case for $p_1$. However, since superiority is prioritized to futility, the change in futility criterion does not affect the false positive rate in the other two outcomes. We would like to emphasize the fact that precisely estimating false positive rates through simulations is challenging and the presented graph should not be overinterpreted. 
+
+\begin{figure}[t]
+	
+	\centering
+	\includegraphics[width=1\textwidth]{figures/alpha_pp01}
+	\caption{Estimated false positive rate across simulation scenarios. On the X axis are the increasing values of superiority probability threshold and on the Y axis is the estimate of type I error rate. The column panels represent the three assumed set of values for CER presented in Table~\ref{t2}, the row panels represent two values for the futility bouns. The colors/line types/dot shapes refer to the three outcome definitions.}
+	\label{fig:alpha}
+	
+\end{figure}
+
+Figure~\ref{fig:nt} shows the expected sample size at trial termination over different simulation scenarios. The trial size increases for smaller assumed affect sizes. In absence of an actual effect, the trial is either stopped early due to a false positive result or enough evidence for futility. Therefore, the futility bound plays a role in trial size in this case; a higher futility bound increases the chance of stopping early for futility and therefore decreases the expected  trial size. A more stringent superiority criterion (higher superiority probability threshold) results in larger trials on average as the chance of stopping early is lowered.
+
+\begin{figure}[t]
+	
+	\centering
+	\includegraphics[width=1\textwidth]{figures/nt_pp01}
+	\caption{Expected sample size at trial termination across simulation scenarios. On the X axis are the increasing values of superiority probability threshold and on the Y axis is the average trial size. The column panels represent the assumed RR values with RR: 1 representing no effect.  The row panels represent the three assumed set of values for CER presented in Table~\ref{t2} and the color of the bars refer to two values for the futility bounds.}
+	\label{fig:nt}
+	
+\end{figure}
+
+Finally, Figure~\ref{fig:fut} presents the estimated probability of concluding futility for relevant simulation scenarios. The simulation results are filtered to include only small or zero effect assumptions, i.e., $RR = 0.8, 0.9, 1$, since the probability of concluding futility is negligible in other cases. Clearly, using a higher futility bound results in higher chance of concluding futility. The futility rule is sufficiently stringent that the chance of concluding futility is only non-negligible when the trial is in fact futile, i.e., $RR\leq RR_f$. The probability of stopping for futility is highest under the largest control event rates and is at best 30\%.
+
+\begin{figure}[t]
+	
+	\centering
+	\includegraphics[width=1\textwidth]{figures/futstop_pp01}
+	\caption{Estimated probability of concluding futility across simulation scenarios. On the X axis are the RR values filtered to small or no effect and on the Y axis is the estimated probability of concluding futility. The panels represent the values of the futility bound. The colors/line types/dot shapes refer to the three assumed set of values for CER presented in Table~\ref{t2}.}
+	\label{fig:fut}
+	
+\end{figure}
+
+
+\section{Discussion}\label{Sec:dis}
+We have proposed a Bayesian adaptive design with both futility and superiority stopping rules for the case that multiple case definitions are available for the event of interest and the event rates vary over these definitions. The challenge is to decide on various components of the design and decision criteria according to a variety of design operating characteristics each of which depends on at least a subset of design and decision parameters. 
+
+We showcase a simulation study that aims at exploring a variety of plausible options and the behaviour of design operating characteristics across a large set of scenarios. The goal is to provide the team of investigators with insight on the combination of assumptions, decision criteria and sample sizes that result in acceptable operating characteristics and eventually to finalize the trial design to achieve optimality with respect to the operating characteristics as well as feasibility and resources (time and cost).
+
+The simulation study presented in the paper is based on the assumption that the treatment reduces equally the risk of all events that the case definitions are composed of. However, this may not be a realistic assumption. For example, the treatment may have an effect in reducing the risk of non-injury death but not on the risk of sepsis diagnosed by any means. Under this hypothetical scenario, using $p_1$ or $p_2$ instead of $s$ results in including a set of events whose risk of occurrence is unchanged by the intervention. Such an approach yields no additional power but can result in loss of power by introducing noise on top of the event of interest. Therefore, case definitions with higher event rates should only be used with scientific justification for the relevance of the additional events.
+
+Another assumption underlying the presented simulations is that the control event risks remain constant over time. In reality this assumption may not hold. Incorporating a time-varying control risk into the simulation study is straightforward. The challenge is to come up with reasonable assumptions for the functional path along which the risk varies. A possible alteration to the design that removes the requirement of making assumptions regarding the CER is to schedule the interim analyses with respect to the number of events rather than number of participants. This approach, however, adds a significant level of uncertainty to the time of interim analyses and the length of the trial overall. Especially, with low event rates such an approach can result in an infeasible and seemingly endless trial. 
+
+
+\newpage
+%\bibliographystyle{spbasic}   
+\bibliographystyle{apalike}
+%\bibliographystyle{plain}
+\bibliography{ref01}
+
+%\begin{figure}[t]
+%	
+%	\begin{subfigure}[b]{0.5\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{}
+%		\caption{}
+%		\label{}
+%	\end{subfigure}
+%	\begin{subfigure}[b]{0.5\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{}
+%		\caption{}
+%		\label{}
+%	\end{subfigure}
+%	
+%	\centering
+%	\begin{subfigure}[b]{0.5\textwidth}
+%		
+%		\includegraphics[width=\textwidth]{}
+%		\caption{}
+%		\label{}
+%	\end{subfigure}\\
+%	\caption{ }
+%	\label{}
+%\end{figure}
+%
+%
+%\begin{figure}[t]
+%	\centering
+%	\includegraphics[width=.75\textwidth]{}
+%	\caption{}
+%	\label{}
+%\end{figure}
+
+\end{document}
